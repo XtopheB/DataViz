@@ -71,30 +71,27 @@
 \emph{Data visualization is one of the key elements to inform a wide range of statistics consumers, from medias to politicians and obviously,  the general public. In this field of communication,  NSOs who are in competition with other public and private communication channels, must differentiate themselves by the quality, accuracy and efficiency of the information they release, in particular through statistically-based graphics and graphical interfaces. But as for any statistics, data visualization should be designed to help the understanding of complex phenomena and  facilitate fair comparisons. They must act as visual statistical tests  and reveal unambiguous patterns and data-based “truths”. This paper propose to highlighting commonly encountered “visual lies”, that is data visualizations where what is represented (or perceived) is not what is present in the data set. Such representations can alter the perception of the underlying statistical messages and values delivered to various users and medias. Our approach is based on 10 rules that can be used to drastically change the understanding of the information represented from any given data set. We preach here counterexamples to reveal the best practices, in an attempt to promote data visualizations as a powerful tool for trustworthy communication of Official Statistics.}
 \end{abstract}
 
+\newpage
+\tableofcontents
+
+\newpage
 
 \section{Introduction}
-In a world saturated with data and competing narratives, the role of National Statistical Offices (NSOs) as trusted providers of accurate and impartial information is more vital than ever \cite{Hossein2023-DataGov}, \cite{Schreyer2024-Intw}, \cite{Perucci22024-Trust}, \cite{Pullinger2020-Trust}. Increasingly, and since the early hours of the Covid-19 pandemic, data visualization has emerged as a critical and powerful medium for public communication of statistical indicators and data-based analysis. When thoughtfully designed, graphical representations enable users, \emph{ e.g.}  policymakers, journalists, or general public, to grasp complex trends, identify disparities, and draw data-based conclusions. However, as with all forms of statistical communication, graphics carry choices that can enhance or undermine the credibility of the information they are meant to convey. This is well documented in statistics were statistical fallacies \cite{Huff1993} and paradoxes \cite{blyth1973simpson} are well-known and well taught in 101 statistical courses. 
+In a world saturated with data and competing narratives, the role of National Statistical Offices (NSOs) as trusted providers of accurate and impartial information is more vital than ever \cite{Hossein2023-DataGov, Schreyer2024-Intw, Perucci22024-Trust, Pullinger2020-Trust}. Increasingly, and since the early hours of the Covid-19 pandemic, data visualization has emerged as a critical and powerful medium for public communication of statistical indicators and data-based analysis. When thoughtfully designed, graphical representations enable users, \emph{ e.g.}  policymakers, journalists, or general public, to grasp complex trends, identify disparities, and draw data-based conclusions. However, as with all forms of statistical communication, graphics carry choices that can enhance or undermine the credibility of the information they are meant to convey. This is well documented in statistics were statistical fallacies \cite{Huff1954} and paradoxes \cite{blyth1973simpson} are well-known and well taught in 101 statistical courses. 
 
 Data visualization, however, remains an undervalued component of statistical practice, with traditional approaches often prioritizing modeling over communication \cite{Wickham2014}. While basic graphical tools are typically introduced for exploratory analysis, most mainstream statistical training overlooks the cognitive pitfalls and perceptual biases inherent in visual representation \cite{Cleveland1984}, \cite{Cairo2019} \cite{healey2007perception}.
 
 
 %While most NSOs adhere to principles of objectivity and professional standards, they face growing pressure to compete in a crowded information ecosystem. Social media, data journalism, and private think tanks all vie for public attention—often with more visually engaging or simplified messages. This environment risks incentivizing shortcuts in visual design that may sacrifice nuance, fairness, or even accuracy.
 
-This paper critically examines how visual representations can inadvertently (or purposefully) mislead, drawing attention to what we call “visual lies”, a term defined by \cite{Tufte2001} as situations where the representation or the impression conveyed by a graphic does not match the underlying data. While the term "lie"  is deliberately provocative even if inspired by two seminal references in statistics \cite{Huff1993} and geospatial representation  \cite{Monmonier1991}, our aim is constructive: to expose common pitfalls in data visualization and offer best practices that reinforce the credibility and communicative power of official statistics.
+This paper critically examines how visual representations can inadvertently (or purposefully) mislead, drawing attention to what we call “visual lies”, a term defined by \cite{Tufte2001} as situations where the representation or the impression conveyed by a graphic does not match the underlying data. While the term "lie"  is deliberately provocative even if inspired by two seminal references in statistics \cite{Huff1954} and geospatial representation  \cite{Monmonier1991}, our aim is constructive: to expose common pitfalls in data visualization and offer best practices that reinforce the credibility and communicative power of official statistics.
 
 While some authors rightfully claim that the choice of any graphical form shouldn't be dictated by rules \cite{Cairo2019}, but should be data, message and audience driven, we have opted here for ten core rules that highlight typical misrepresentation. Thus, we present here counterexamples to promote a more thoughtful use of graphics, departing from usual practices, habits and software defaults. By identifying the mechanisms through which visual distortion occurs and how it can be avoided, we hope to contribute to ongoing efforts within the statistical community to improve user engagement, statistical and visual literacy and ultimately trust in the dissemination of public data by NSOs.
 
 
 \section{Data visualization}
 
-Data visualization, broadly defined as the graphical representation of qualitative or quantitative data to enhance understanding and communication \cite{Cleveland1993Book}, serves both exploratory and explanatory purposes, helping analysts understand data and enabling audiences to grasp findings quickly and intuitively. Following \cite{buja2009}, we can also consider consider data visualization as a  tool for exploring data and  detecting (discovering) structural information in a given data set. This idea of data visualization as a visual statistical test is presented in  Figure \ref{fig:VisualTest} with an example of how a  simple scatterplot can act as a feature detection. More precisely, the generic visual test can be formalized as:\\
-\begin{center}
-  $H_0$ : \{There is "nothing"  \} = \{\textbf{No} feature, \textbf{No} discovery\} \\
- \emph{vs}\\
-  $H_1$ : \{ There is "something" \} = \{There is \textbf{``some''} feature \}
-\end{center}
-
-The implicit null hypothesis $H_0$ tested can obviously vary with the type of graphic and the data set under scrutiny, but there is a parallelism between quantitative testing and visual testing, or first step discovery. 
+Data visualization, broadly defined as the graphical representation of qualitative or quantitative data to enhance understanding and communication \cite{Cleveland1993Book}, serves both exploratory and explanatory purposes, helping analysts understand data and enabling audiences to grasp findings quickly and intuitively. Following \cite{buja2009}, we can also consider consider data visualization as a  tool for exploring data and  detecting (discovering) structural information in a given data set. This idea of data visualization as a visual statistical test is presented in  Figure \ref{fig:VisualTest} with an example of how a  simple scatterplot can act as a feature detection.
 
 \begin{figure}[tbh]
 \begin{center}
@@ -109,51 +106,67 @@ The implicit null hypothesis $H_0$ tested can obviously vary with the type of gr
 \end{center}
 \end{figure}
 
-When analysing and visualizing a data set, any data analysts or statistician implicitly performed this visual test. This is also what any viewer, not aware of the power of statistics, does when looking at any graphic. In his seminal book,  \cite{Bertin1983English}  has a more pragmatic approach stating that anyone should get right answers to legitimate questions when looking at any graphic provide that it well designed and accompanied with contextual information (caption, title, etc.)  
-However, despite its simplicity and effectiveness, this test crucially relies on the good alinement of the visual representation with the feature under scrutiny and with  data set.  Moreover, as any statistical summary and 2-D object, it carries a risk of distortion due to a bad choice of the graphical form or visual encoding of the embedded information. The test may then fail due to a failure to comply with good practices leading to distortions of the information in the graphical representation.
+More precisely, the generic visual test can be formalized as:
+\begin{center}
+  $H_0$ : \{There is "nothing"  \} = \{\textbf{No} feature, \textbf{No} discovery\} \\
+ \emph{vs}\\
+  $H_1$ : \{ There is "something" \} = \{There is \textbf{``some''} feature \}
+\end{center}
+
+The implicit null hypothesis $H_0$ tested can obviously vary and should be specific to  the type of graphic and the data set under scrutiny, but there is a clear parallelism between quantitative testing and visual testing, or first step discovery. When analysing and visualizing a data set, any data analysts or statistician implicitly perform this visual test. This is also what any viewer, not aware of the power of statistics, does when looking at any graphic. 
+
+In his seminal book,  \cite{Bertin1983English}  has a related but pragmatic approach to data visualization stating that anyone, when looking at any graphic, should get right answers  to legitimate questions  provide that it is well designed and accompanied with contextual information (caption, title, etc.). This outcome, \textit{i.e.} the right answer to a legitimate question, is somehow similar to the result of a test and rejection or not of the null hypothesis.
+
+However, despite its simplicity, practicality and effectiveness, this test crucially relies on the good alignment of the visual representation with the data set and its features under scrutiny. As any statistical summary, it carries risks of false detection (Type I error), or not detecting an existing (in the dataset) feature (Type II error) due to graphical distortion or due to a bad choice of the graphical form. Thus, the test relevance and power heavily relies on a strict adherence to good practices and to a good understanding of the drawbacks of visual representations as a 2-D object in a multidimensional space. 
  
- To measure the extend of this distortion \cite{Tufte2001} introduced the concept of the “\emph{lie factor}”, defined as the ratio of the effect shown in a graphic to the effect actually present in the data. 
+ To measure the extend of a graphical distortion \cite{Tufte2001} introduced the concept of the “\emph{lie factor}”, defined as the ratio of the effect shown in a graphic to the effect actually present in the data. 
  \begin{equation}
  \nonumber
 \text{Lie Factor} = \frac{\text{Size of effect shown in graphic}}{\text{Size of effect in data}}
 \end{equation}
  
- A lie factor far from 1.0 indicates a misrepresentation of the data, impeaching any valid visual test. 
-  These risks are particularly consequential in the realm of official statistics, where public trust and informed decision-making depend on clarity, transparency, and fairness in communication.
-
-
- Institutional guidance from Eurostat \citep{Eurostat2022} and the OECD \citep{OECD2017} emphasizes the increasing importance of effective visualization in ensuring statistical messages are not only seen but also correctly interpreted.
-
-
-
+ A lie factor far from 1.0 indicates a misrepresentation of the data, impeaching any valid visual test.  The risks emphasized here are particularly consequential in the realm of Official Statistics, where public trust and informed decision-making depend on clarity, transparency, and fairness in communication. This why institutions like Eurostat and OECD  \cite{Eurostat2022, OECD2017} ar some NSOs \cite{ONS2020} have recently emphasized the increasing importance of effective visualization in ensuring statistical messages are not only seen but also correctly interpreted.
  
+
+
 
 %In this article, we call lie a situation where what is represented or perceived is not what is not present in the data set.
 
 %----------------------------------------------------------------------------------------
 %	Rules
 %----------------------------------------------------------------------------------------
+\section{Ten Rules for Lying With Graphics}
 
+In the context of official statistics, the cost of visual distortion is particularly high. NSO publications are expected to adhere to strict standards of neutrality, transparency, and interpretability \cite{FPOS1994}. Yet, even subtle design choices, like axis scaling, chart types, or visual or color encodings, can unintentionally introduce bias or ambiguity, (mis)leading the reader to a conclusion that is not one supported by the data  \cite{Cairo2019}. This is compounded by the fact that many statistical producers, together with  the great majority of readers of statistical reports, receive limited training in data visualization \cite{Radermacher2021Literacy, damouras2021}. With the development of ready-to-use software and interactive statistical software,  statisticians are also inclined to  rely on software defaults or classical stylistic conventions without fully considering their communicative effects.
 
-\section{Rule \#1: Modify Axes}
+This section introduces ten common visual practices that risk misleading audiences. These "rules" are drawn from both empirical studies and recurring issues observed in real-world statistical dissemination. By highlighting these pitfalls, we advocate for a more deliberate and informed approach to graphical design—one that treats data visualization as an integral part of statistical production, not a "decorative afterthought" \cite{cairo2016truthful}.
+
+\subsection*{Rule \#1: Modify Axes}
+
+One of the most common and well-documented techniques for misleading with graphics is the truncation of the vertical axis, especially in bar charts. As highlighted in Figure \ref{Truncating1}  when the baseline does not start at zero, differences between values appear exaggerated, distorting the viewer’s perception of the magnitude of change \cite{Tufte2001,cairo2016truthful}. This issue is particularly critical for bar charts, where the length of the bar directly encodes the value. Truncating the axis violates the proportional relationship between data and its visual representation.
+
+\begin{figure}[tbh]
+\includegraphics[width = 0.5\linewidth]{Truncated_Bar_Graph.png} \includegraphics[width = 0.5\linewidth]{Bar_graph.png}
+\label{Truncating1}
+\caption{Same data represented with and without vertical axis truncation. A bar char with an axis starting at an ad-hoc value exaggerate differences (left), while there are small absolute variations in the data set (right). Source: \cite{wiki:TruncatedBar} }
+\end{figure}
+
+While truncating the vertical axis is widely recognized as problematic, less attention is often paid to distortions introduced on the horizontal axis. In time series, discontinuities in the horizontal axis, such as omitting time periods or inconsistently spacing intervals can significantly alter the perceived trend or suggest artificial breaks in continuity. These distortions may occur unintentionally, for instance when data is missing for certain periods, or when visualization software (such as Microsoft Excel) automatically spaces data points evenly regardless of their actual temporal values.
+Whether vertical or horizontal, such disruptions compromise the temporal or quantitative integrity of the data and must be clearly signaled to the user to preserve trust.
+
+Interestingly,  \cite{Correll2019} experimentally showed that this exaggerating effect is also found in line charts (Figure \ref{fig:truncated2}). This poses the question of when it is appropriate or not to start line chart at the zero origin, in particular when the origin is out of the range of the data set as it is the case when representing  Earth temperature in Fahrenheit for example. 
+
+\begin{figure}[tbh]
+    \centering
+   \includegraphics[width = 0.4\linewidth]{ExperienceTruncatingAxis-Bars-Correll2019.JPG} \includegraphics[width = 0.4\linewidth]{ExperienceTruncatingAxis-Lines-Correll2019.JPG}
+\caption{Truncation serves to exaggerate effect sizes for  both  bar and line charts. }
+    \label{fig:truncated2}
+\end{figure}
 
 \textbf{CITE \cite{Xiong2021-VisuBar} here in conclusion to highlight the difficulty to use multiple bar charts for comparisons}
 
- \textbf{ ALSO \cite{correll_truncating_2019} on truncated axis}
 
-One of the most common problem is the truncation of the vertical axe in bar charts, inducing an exaggerating effect.
-\begin{center}
-\includegraphics[width = 0.4\linewidth]{Truncated_Bar_Graph.png} \includegraphics[width = 0.4\linewidth]{Bar_graph.png}
-\captionof{figure}{\color{DarkSlateGray} {Truncation exaggerating effect (left), small absolute variation(right)}}
-\end{center}
-
-Interestingly,  \cite{Correll2019} experimentally showed that this exaggerating effect is also found in line charts (Figure 1b). This poses the question of when it is appropriate to start line chart at the origin, in particular when the origin is out of the range of the data set (ex: Earth temperature in Fahrenheit).
-\begin{center}
-\includegraphics[width = 0.4\linewidth]{ExperienceTruncatingAxis-Bars-Correll2019.JPG} \includegraphics[width = 0.4\linewidth]{ExperienceTruncatingAxis-Lines-Correll2019.JPG}
-\captionof*{figure}{\color{DarkSlateGray} {\textbf{Figure 1b:} Truncation serves to exaggerate effect sizes in  both line and bar charts. }}
-\end{center}
-
-\section*{Rule \#2: Modify the Framing Design}
+\subsection{Rule \#2: Modify the Framing Design}
 Framing a graphic in a wide or tall format can also affect the perception of a phenomena, typically for time series.
 
 \begin{center}\vspace{1cm}
@@ -170,7 +183,7 @@ But the framing, and space left around data points can subtly affect our percept
 
 \end{center}
 
-\section*{Rule \#3: Use Double Axes}
+\subsection{Rule \#3: Use Double Axes}
 
 Plotting two times series with different units on two axis (left and right) is a tempting practice that results in a spurious visual correlation. This has been well illustrated in \cite{muth2018} (see also \cite{Vigen2015}).
 \begin{center}
@@ -182,7 +195,7 @@ Plotting two times series with different units on two axis (left and right) is a
 \textbf{ Cite \cite{isenberg_study_2011} HERE}
 
 
-\section*{Rule \#4: Select Your Scope}
+\subsection{Rule \#4: Select Your Scope}
 Cherry-picking the data through an (in)appropriate choice of the range in any time series, is alsovery misleading. This is particularly true for time serie and scatter plots but can also change the representation of maps when only a part of the world is selected as illustrated in \cite{bahoken2020}.
 
 \begin{center}
@@ -191,14 +204,14 @@ Cherry-picking the data through an (in)appropriate choice of the range in any ti
 
 \end{center}
 
-\section*{Rule \#5: Use Several Pie Charts}
+\subsection{Rule \#5: Use Several Pie Charts}
 Pie charts are among the most popular and most used graphics although they are not suited for fair comparisons (\cite{Cleveland1984})
 \begin{center}
 \includegraphics[width = 0.7\linewidth]{Compare3Pies.png}
 \captionof{figure}{\color{DarkSlateGray} {Comparing pie charts can be a difficult visual test and should be avoided}}
 \end{center}
 
-\section*{Rule \#6: Use Areas}
+\subsection{Rule \#6: Use Areas}
 Our perception of areas is very bad but area-based comparisons still flourishing in publication, in particular in statistical maps where buble maps are one of the most popular encoding (see rule \#10)
 
 \begin{center}
@@ -208,7 +221,7 @@ Our perception of areas is very bad but area-based comparisons still flourishing
 \end{center}
 
 
-\section*{Rule \#7: Use unaligned bars}
+\subsection{Rule \#7: Use unaligned bars}
 Stacked bars are a good example of unaligned visual variables that are difficult to compare. In the example below, it is difficult to test whether the red category is steadily increasing or not.
 \begin{center}
 \includegraphics[width = 0.4\linewidth]{StackedBars-1.png} \hspace{0.2cm} vs \hspace{0.4cm}\includegraphics[width = 0.4\linewidth]{OrderedStakedBars-1.png}
@@ -216,7 +229,7 @@ Stacked bars are a good example of unaligned visual variables that are difficult
 \end{center}
 
 
-\section*{Rule \#8: Cross The Lines}
+\subsection{Rule \#8: Cross The Lines}
 This is probably the most challenging as plotting several crossing lines is likely to produce a graphic where not clear pattern emerges as illustrated by  \cite{Schwabish2014} Alternative design using small multiples graphics, where only one line is highlighted while others are greyed for global reference, helps displaying clear information.
 \begin{center}
 \includegraphics[width = 0.45\linewidth]{Spaghetti0.jpg} \hspace{0.2cm} vs \hspace{0.2cm}\includegraphics[width = 0.3\linewidth]{Spaghetti2.jpg}
@@ -224,7 +237,7 @@ This is probably the most challenging as plotting several crossing lines is like
 
 \end{center}
 
-\section*{Rule \#9: Use Radar Plots}
+\subsection{Rule \#9: Use Radar Plots}
 Comparing individuals in many dimension is challenging, even when the sample in small. Using a data set of 4 individuals \cite{Bontemps2017} illustrated that the area representing the overall performance is highly dependant of the ordering of the axes. This undesirable feature is a major undocumented drawback of radar plots.
 \begin{center}
 \includegraphics[width = 0.4\linewidth]{Radar1.png} \hspace{0.2cm} vs \hspace{0.2cm}\includegraphics[width = 0.4\linewidth]{Radar2.png}
@@ -232,7 +245,7 @@ Comparing individuals in many dimension is challenging, even when the sample in 
 
 \end{center}
 
-\section*{Rule \#10: Use Maps}
+\subsection{Rule \#10: Use Maps}
 Maps are probably the most complex graphical objects and are prone to many issues as documented by \cite{Monmonier1991} and others. Statistical maps use all the visual encoding described here, and thus concentrate all the problems hindering fair visual tests.
 
 \begin{center}
@@ -247,9 +260,7 @@ Maps are probably the most complex graphical objects and are prone to many issue
 %	CONCLUSIONS
 %----------------------------------------------------------------------------------------
 
-
-
-\section*{Conclusion}
+\section{Conclusion \& recommendations}
 
 Since the publication of \cite{Bertin1977}, a lot has been learned on the design of statistical information and on the use of data visualization as a visual language, with a clear semiology. Many publications have highlighted good practices for quite a long time (see the "old" \cite{Brinton1914}), but despite this abundant literature, very few articles have illustrated the dangers  of  easy-to-produce and popular  graphics. We should not let these useful visual tests be biased by software default settings, misconceived designs or uninformed statisticians.
 
@@ -270,9 +281,13 @@ Since the publication of \cite{Bertin1977}, a lot has been learned on the design
 %	ACKNOWLEDGEMENTS
 %----------------------------------------------------------------------------------------
 
-%%\section*{Acknowledgements}
-%%
-%%This work was initiated a long time ago and find its roots in a series of lectures while the author was still at the Toulouse School of Economics and actively contributing to the non-profit organization Toulouse Dataviz.
+\subsection{Acknowledgements}
+ This work was initiated a long time ago and find its roots in a series of lectures while the author was still at the Toulouse School of Economics and actively contributing to the non-profit organization Toulouse Dataviz. The author declare to have no conflicts of interest. 
+ 
+We have used online GenAI tools for the writing of this paper (ChatGPT, CoPilot), mainly as 
+ as helper for English editing and reformulation. Some of the graphics benefited from code co-generated by these tools as well. Example of prompts include "\textit{Rewrite that sentence in literate English}". "\textit{Adjust the code in R for including text inside the graphic}". 
+ 
+
 
 %----------------------------------------------------------------------------------------
 
