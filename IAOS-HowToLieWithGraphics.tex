@@ -21,6 +21,9 @@
 \usepackage{graphicx} % Required for including images
 % Location of the graphics files
 
+\usepackage{pgfplots}  % For TIKZ plots
+\pgfplotsset{compat=1.18}
+
 \graphicspath{
 {Graphics/}
 }
@@ -113,7 +116,7 @@ More precisely, the generic visual test can be formalized as:
   $H_1$ : \{ There is "something" \} = \{There is \textbf{``some''} feature \}
 \end{center}
 
-The implicit null hypothesis $H_0$ tested can obviously vary and should be specific to  the type of graphic and the data set under scrutiny, but there is a clear parallelism between quantitative testing and visual testing, or first step discovery. When analysing and visualizing a data set, any data analysts or statistician implicitly perform this visual test. This is also what any viewer, not aware of the power of statistics, does when looking at any graphic. 
+The implicit null hypothesis $H_0$ tested can obviously vary and should be specific to  the type of graphic and the data set under scrutiny, but there is a clear parallelism between quantitative testing and visual testing. When analysing and visualizing a data set, any data analysts or statistician implicitly perform this visual test to discover "\textit{what one would never expected to see}" to quote J. Tuckey \cite{tukey1977exploratory}. This is also true for any viewer, not aware of the power of statistics,  when looking at any graphic. 
 
 In his seminal book,  \cite{Bertin1983English}  has a related but pragmatic approach to data visualization stating that anyone, when looking at any graphic, should get right answers  to legitimate questions  provide that it is well designed and accompanied with contextual information (caption, title, etc.). This outcome, \textit{i.e.} the right answer to a legitimate question, is somehow similar to the result of a test and rejection or not of the null hypothesis.
 
@@ -127,14 +130,10 @@ However, despite its simplicity, practicality and effectiveness, this test cruci
  
  A lie factor far from 1.0 indicates a misrepresentation of the data, impeaching any valid visual test.  The risks emphasized here are particularly consequential in the realm of Official Statistics, where public trust and informed decision-making depend on clarity, transparency, and fairness in communication. This why institutions like Eurostat and OECD  \cite{Eurostat2022, OECD2017} ar some NSOs \cite{ONS2020} have recently emphasized the increasing importance of effective visualization in ensuring statistical messages are not only seen but also correctly interpreted.
  
-
-
-
-%In this article, we call lie a situation where what is represented or perceived is not what is not present in the data set.
-
 %----------------------------------------------------------------------------------------
 %	Rules
 %----------------------------------------------------------------------------------------
+
 \section{Ten Rules for Lying With Graphics}
 
 In the context of official statistics, the cost of visual distortion is particularly high. NSO publications are expected to adhere to strict standards of neutrality, transparency, and interpretability \cite{FPOS1994}. Yet, even subtle design choices, like axis scaling, chart types, or visual or color encodings, can unintentionally introduce bias or ambiguity, (mis)leading the reader to a conclusion that is not one supported by the data  \cite{Cairo2019}. This is compounded by the fact that many statistical producers, together with  the great majority of readers of statistical reports, receive limited training in data visualization \cite{Radermacher2021Literacy, damouras2021}. With the development of ready-to-use software and interactive statistical software,  statisticians are also inclined to  rely on software defaults or classical stylistic conventions without fully considering their communicative effects.
@@ -143,18 +142,19 @@ This section introduces ten common visual practices that risk misleading audienc
 
 \subsection*{Rule \#1: Modify Axes}
 
-One of the most common and well-documented techniques for misleading with graphics is the truncation of the vertical axis, especially in bar charts. As highlighted in Figure \ref{Truncating1}  when the baseline does not start at zero, differences between values appear exaggerated, distorting the viewer’s perception of the magnitude of change \cite{Tufte2001,cairo2016truthful}. This issue is particularly critical for bar charts, where the length of the bar directly encodes the value. Truncating the axis violates the proportional relationship between data and its visual representation.
+One of the most common and well-documented techniques for misleading with graphics is the truncation of the vertical axis, especially in bar charts. As highlighted in Figure \ref{fig:truncated1}  when the baseline does not start at zero, differences between values appear exaggerated, distorting the viewer’s perception of the magnitude of change \cite{Tufte2001,cairo2016truthful}. This issue is particularly critical for bar charts, where the length of the bar directly encodes the value. Truncating the axis violates the proportional relationship between data and its visual representation \cite{Leo2019economist}.
+
 
 \begin{figure}[tbh]
-\includegraphics[width = 0.5\linewidth]{Truncated_Bar_Graph.png} \includegraphics[width = 0.5\linewidth]{Bar_graph.png}
-\label{Truncating1}
+\includegraphics[width = 0.45\linewidth]{Truncated_Bar_Graph.png} \includegraphics[width = 0.45\linewidth]{Bar_graph.png}
 \caption{Same data represented with and without vertical axis truncation. A bar char with an axis starting at an ad-hoc value exaggerate differences (left), while there are small absolute variations in the data set (right). Source: \cite{wiki:TruncatedBar} }
+\label{fig:truncated1}  % <- label must be after caption
 \end{figure}
 
 While truncating the vertical axis is widely recognized as problematic, less attention is often paid to distortions introduced on the horizontal axis. In time series, discontinuities in the horizontal axis, such as omitting time periods or inconsistently spacing intervals can significantly alter the perceived trend or suggest artificial breaks in continuity. These distortions may occur unintentionally, for instance when data is missing for certain periods, or when visualization software (such as Microsoft Excel) automatically spaces data points evenly regardless of their actual temporal values.
 Whether vertical or horizontal, such disruptions compromise the temporal or quantitative integrity of the data and must be clearly signaled to the user to preserve trust.
 
-Interestingly,  \cite{Correll2019} experimentally showed that this exaggerating effect is also found in line charts (Figure \ref{fig:truncated2}). This poses the question of when it is appropriate or not to start line chart at the zero origin, in particular when the origin is out of the range of the data set as it is the case when representing  Earth temperature in Fahrenheit for example. 
+Interestingly,  \cite{Correll2019} experimentally showed that this exaggerating effect is also found in line charts (Figure \ref{fig:truncated2}). This poses the question of when it is appropriate or not to start line chart at the zero origin, in particular when the origin is out of the range of the data set.\footnote{ One typical example is the representation of earth temperature over time. Starting the vertical axis (temperature) at zero degree Fahrenheit makes no sense and annihilate the visual representation of the recent and dramatic increase in temperature due to global warming.} 
 
 \begin{figure}[tbh]
     \centering
@@ -163,25 +163,81 @@ Interestingly,  \cite{Correll2019} experimentally showed that this exaggerating 
     \label{fig:truncated2}
 \end{figure}
 
-\textbf{CITE \cite{Xiong2021-VisuBar} here in conclusion to highlight the difficulty to use multiple bar charts for comparisons}
-
+While bar charts remain one of the most widely used visualization types in official statistical publications due to their familiarity and simplicity, \cite{Xiong2021-VisuBar} demonstrate that comparing values across multiple grouped or separated bar charts introduces significant perceptual challenges. Their study shows that users struggle to make accurate comparisons when bars are not presented within a unified coordinate system, leading to increased cognitive load and potential misinterpretation.
 
 \subsection{Rule \#2: Modify the Framing Design}
-Framing a graphic in a wide or tall format can also affect the perception of a phenomena, typically for time series.
+Framing a graphic in a wide or tall format can also affect the perception of a phenomena, typically for time series,  widely used in Official Statistics for economic indicators, public health trends, or environmental measures.
 
-\begin{center}\vspace{1cm}
-            \includegraphics[width = 0.3\linewidth]{Line_graph1.png}
-            \includegraphics[width = 0.3\linewidth]{Line_graph2.png}
-            \includegraphics[width = 0.2\linewidth]{Line_graph1-3.png}\\
-            \includegraphics[width = 0.6\linewidth]{Line_graph1-4.png}
-\captionof{figure}{\color{DarkSlateGray} {The perception of a time series increases is affected by the framing}}
-\end{center}
-But the framing, and space left around data points can subtly affect our perception of correlation  \cite{Cleveland1982}.
-\begin{center}
+Framing a time series in a wide or tall rectangular plot can significantly affect how viewers perceive trends, rates of change, and volatility. Compressing or stretching the time axis alters the slope angles of line segments, thereby biasing interpretation. In Figure \ref{fig:aspect-ratio-comparison}, for example, wide formats tend to flatten trends, while tall formats exaggerate variations. 
+
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}
+% First plot: wide aspect ratio
+\begin{axis}[
+    width=7cm,
+    height=3.5cm,
+    title={Wide Aspect Ratio},
+    xlabel=Time,
+    ylabel=Value,
+    xtick={1,2,3,4,5,6,7},
+    ymin=0, ymax=10,
+    grid=major
+]
+\addplot[color=blue, thick] coordinates {(1,2) (2,3) (3,5) (4,6) (5,7) (6,7.5) (7,8)};
+\end{axis}
+
+\end{tikzpicture}
+\hspace{1cm}
+\begin{tikzpicture}
+
+% Second plot: tall aspect ratio
+\begin{axis}[
+    width=4cm,
+    height=6.5cm,
+    title={Tall Aspect Ratio},
+    xlabel=Time,
+    ylabel=Value,
+    xtick={1,2,3,4,5,6,7},
+    ymin=0, ymax=10,
+    grid=major
+]
+\addplot[color=blue, thick] coordinates {(1,2) (2,3) (3,5) (4,6) (5,7) (6,7.5) (7,8)};
+\end{axis}
+\end{tikzpicture}
+\caption{Effect of aspect ratio on trend perception: the same data appear flatter in the wide format and steeper in the tall format.}
+\label{fig:aspect-ratio-comparison}
+\end{figure}
+
+
+%% OLD figures  with  4 cases...
+% \begin{center}\vspace{1cm}
+%             \includegraphics[width = 0.3\linewidth]{Line_graph1.png}
+%             \includegraphics[width = 0.3\linewidth]{Line_graph2.png}
+%             \includegraphics[width = 0.2\linewidth]{Line_graph1-3.png}\\
+%             \includegraphics[width = 0.6\linewidth]{Line_graph1-4.png}
+% \captionof{figure}{\color{DarkSlateGray} {The perception of a time series increases is affected by the framing}}
+% \end{center}
+
+A growing number of visualization guideline \cite{Sonning2023Perception} explicitly recommend \textit{banking to 45}, \textit{i.e.}, choosing an aspect ratio that centers median line slopes around 45°, facilitating more accurate slope perception. 
+
+\subsubsection*{There is more...}
+
+Not only the framing itself has to be controlled and adjusted according to the data, but the level of zoom and the space left around data points can subtly affect our perception of features. In a seminal work  \cite{Cleveland1982} showed how our perception of correlation is affected by this zooming effect, as highlighted in Figure \ref{fig:correlation}. 
+
+\begin{figure}[tbh]
+\centering
  \includegraphics[width =0.6\linewidth]{ScalesScatterplotConcentrationCleveland.JPG}
- \captionof*{figure}{\color{DarkSlateGray} {\textbf{Figure 2b:} The correlation  between Xs and Ys is the same in the two data sets.  }}
+ \caption{The correlation between $Xs$ and $Ys$ is the same in the two graphics, while experiment shows that reader perceive a higher correlation in the left graphic \cite{Cleveland1982}   }
+ \label{fig:correlation}
+\end{figure}
 
-\end{center}
+In the context of official statistics publications, the implication of unthought or by-default choices carry real consequences since artificially compressing a chart, or zooming in or out around data,   can lead readers to underestimate the severity of a recession or misjudge the urgency of a public policy issue. 
+
+Given the high stakes of public policy decisions, NSOs should adopt design principle and approach data visualizations with the same critical scrutiny applied to  written statistical analysis. The final design of any published graphic should be both human- and data-driven, not merely the result of software defaults\footnote{For instance, in \texttt{R}, base plots are typically rendered in square plotting windows by default.} or the arbitrary layout conventions of publishers, such as full-page or two-column formats. These seemingly benign choices can significantly distort how trends and differences are perceived by end users.
+
 
 \subsection{Rule \#3: Use Double Axes}
 
