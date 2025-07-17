@@ -165,8 +165,9 @@ Interestingly,  \cite{Correll2019} experimentally showed that this exaggerating 
 
 While bar charts remain one of the most widely used visualization types in official statistical publications due to their familiarity and simplicity, \cite{Xiong2021-VisuBar} demonstrate that comparing values across multiple grouped or separated bar charts introduces significant perceptual challenges. Their study shows that users struggle to make accurate comparisons when bars are not presented within a unified coordinate system, leading to increased cognitive load and potential misinterpretation.
 
-\subsection{Rule \#2: Modify the Framing Design}
-Framing a graphic in a wide or tall format can also affect the perception of a phenomena, typically for time series,  widely used in Official Statistics for economic indicators, public health trends, or environmental measures.
+\subsection*{Rule \#2: Modify the Framing Design}
+
+Framing a graphic in a wide or tall format can also affect the perception of a phenomena \cite{Pandey2015Deceptive}, typically for time series,  widely used in Official Statistics for \textit{e.g.} economic indicators, public health trends, or environmental measures.
 
 Framing a time series in a wide or tall rectangular plot can significantly affect how viewers perceive trends, rates of change, and volatility. Compressing or stretching the time axis alters the slope angles of line segments, thereby biasing interpretation. In Figure \ref{fig:aspect-ratio-comparison}, for example, wide formats tend to flatten trends, while tall formats exaggerate variations. 
 
@@ -225,7 +226,7 @@ A growing number of visualization guideline \cite{Sonning2023Perception} explici
 
 \subsubsection*{There is more...}
 
-Not only the framing itself has to be controlled and adjusted according to the data, but the level of zoom and the space left around data points can subtly affect our perception of features. In a seminal work  \cite{Cleveland1982} showed how our perception of correlation is affected by this zooming effect, as highlighted in Figure \ref{fig:correlation}. 
+Not only the framing itself has to be controlled and adjusted according to the data, but the level of zoom and the space left around data points can subtly affect the perception of some important features. In a seminal work  \cite{Cleveland1982} showed how our perception of correlation is affected by this zooming effect, as highlighted in Figure \ref{fig:correlation}. 
 
 \begin{figure}[tbh]
 \centering
@@ -234,21 +235,28 @@ Not only the framing itself has to be controlled and adjusted according to the d
  \label{fig:correlation}
 \end{figure}
 
-In the context of official statistics publications, the implication of unthought or by-default choices carry real consequences since artificially compressing a chart, or zooming in or out around data,   can lead readers to underestimate the severity of a recession or misjudge the urgency of a public policy issue. 
+In the context of official statistics publications, the implication of unthought or by-default choices carry real consequences since artificially compressing a chart, or zooming in or out around data,   can lead readers to underestimate the severity of a recession or misjudge the urgency of a public policy issue or falsely convince of a strong correlation.
 
 Given the high stakes of public policy decisions, NSOs should adopt design principle and approach data visualizations with the same critical scrutiny applied to  written statistical analysis. The final design of any published graphic should be both human- and data-driven, not merely the result of software defaults\footnote{For instance, in \texttt{R}, base plots are typically rendered in square plotting windows by default.} or the arbitrary layout conventions of publishers, such as full-page or two-column formats. These seemingly benign choices can significantly distort how trends and differences are perceived by end users.
 
 
-\subsection{Rule \#3: Use Double Axes}
+\subsection*{Rule \#3: Use Dual-Axis}
 
-Plotting two times series with different units on two axis (left and right) is a tempting practice that results in a spurious visual correlation. This has been well illustrated in \cite{muth2018} (see also \cite{Vigen2015}).
-\begin{center}
-\includegraphics[width = 0.7\linewidth]{LCRost-dualaxisCrazy.png}
-\captionof{figure}{\color{DarkSlateGray} {Playing with left and right axes (source: \cite{muth2018})}}
-\end{center}
+Dual‑axis (or two‑scale) charts plot two variables on the same horizontal axis but use separate left and right vertical scales. This allows representing in a single graphic, the evolution of  two variables with different units - hence the two scales -  that are incomparable by nature.  These popular graphics often select both scales to align the curves, creating the illusion of a correlation even when the variables are unrelated. Such spurious correlations result from the  freedom of choice in both scales and often goes unnoticed by readers \cite{Vigen2015}.
 
+In Figure \ref{fig:dual-axis}, we borrowed a brilliant demonstration from \cite{muth2018} with six charts using the same time-series data but different dual-axis scaling strategies, to showcase how different is the  perception of the relationships between the two curves in the six graphics  and how \textit{spurious correlations} can emerge purely from axis choices.
 
-\textbf{ Cite \cite{isenberg_study_2011} HERE}
+\begin{figure}[tbh]
+    \centering
+\includegraphics[width = 0.8\linewidth]{LCRost-dualaxisCrazy.png}
+\caption{Modifying left and right axes leads to very different perceptions of the relationships between two curves.  (source: \cite{muth2018})}
+\label{fig:dual-axis}
+\end{figure}
+
+Empirical research has shown that users find dual‑axis charts increase cognitive load and are  more difficult to interpret accurately \cite{Isenberg2011}. Authors recommend aligning multiple plots (side-by-side or bottom and top) as they are easier to understand, while \cite{Ellis2016Dual-axis}  explains the Do’s and Don’ts of creating dual axis charts.
+
+As an alternative \cite{few2008dual} and \cite{muth2018} suggest to plot indexed values converting each variable to a percentage change based on a reference year. This would standardize the two variables to a common scale, reestablishing  the role of the initial comparison of two trends for two variables with same unit. In the case of time series, an interesting alternative  would be  to use a connected scatterplot, where time is eliminated with each variable being on one axis \cite{Evergreen2020Dual}.
+
 
 
 \subsection{Rule \#4: Select Your Scope}
@@ -322,6 +330,7 @@ Since the publication of \cite{Bertin1977}, a lot has been learned on the design
 
 
 
+\newpage
 
 %
 %\nocite{*} % Print all references regardless of whether they were cited in the poster or not
@@ -337,11 +346,11 @@ Since the publication of \cite{Bertin1977}, a lot has been learned on the design
 %	ACKNOWLEDGEMENTS
 %----------------------------------------------------------------------------------------
 
-\subsection{Acknowledgements}
- This work was initiated a long time ago and find its roots in a series of lectures while the author was still at the Toulouse School of Economics and actively contributing to the non-profit organization Toulouse Dataviz. The author declare to have no conflicts of interest. 
+\subsection*{Acknowledgements}
+This work was initiated a long time ago and find its roots in a series of lectures while the author was still at the Toulouse School of Economics and actively contributing to the non-profit organization Toulouse Dataviz. The author declare to have no conflicts of interest. 
  
-We have used online GenAI tools for the writing of this paper (ChatGPT, CoPilot), mainly as 
- as helper for English editing and reformulation. Some of the graphics benefited from code co-generated by these tools as well. Example of prompts include "\textit{Rewrite that sentence in literate English}". "\textit{Adjust the code in R for including text inside the graphic}". 
+GenAI tools (ChatGPT, CoPilot) have been used for the writing of this paper, mainly as 
+ as helpers for English editing and reformulation of complex sentences. Some of the graphics benefited from pieces of code generated by these tools as well. Example of prompts include "\textit{Rewrite that sentence in literate English}",  "\textit{Adjust the code in R for including text inside the graphic}", or \textit{"Create a \LaTeX - Tikz code for 2 framing designs with synthetic  time series"}.
  
 
 
