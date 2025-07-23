@@ -39,7 +39,7 @@
 \usepackage[comma,authoryear]{natbib}
 % Redefining \cite as \citep 
 \let\oldcite\cite
-\renewcommand{\cite}{\citep}
+\renewcommand{\cite}{\citet}
 
 %% FOR IAOS: 
 %\usepackage[numbers]{natbib}  %   <----- This for IAOS 
@@ -239,10 +239,9 @@ In the context of official statistics publications, the implication of unthought
 
 Given the high stakes of public policy decisions, NSOs should adopt design principle and approach data visualizations with the same critical scrutiny applied to  written statistical analysis. The final design of any published graphic should be both human- and data-driven, not merely the result of software defaults\footnote{For instance, in \texttt{R}, base plots are typically rendered in square plotting windows by default.} or the arbitrary layout conventions of publishers, such as full-page or two-column formats. These seemingly benign choices can significantly distort how trends and differences are perceived by end users.
 
-
 \subsection*{Rule \#3: Use Dual-Axis}
 
-Dual‑axis (or two‑scale) charts plot two variables on the same horizontal axis but use separate left and right vertical scales. This allows representing in a single graphic, the evolution of  two variables with different units - hence the two scales -  that are incomparable by nature.  These popular graphics often select both scales to align the curves, creating the illusion of a correlation even when the variables are unrelated. Such spurious correlations result from the  freedom of choice in both scales and often goes unnoticed by readers \cite{Vigen2015}.
+Dual‑axis (or two‑scale) charts plot two variables on the same horizontal axis but use separate left and right vertical scales. This allows representing in a single graphic, the evolution of  two variables with different units - hence the two scales -  that are incomparable by nature.  These popular graphics often select both scales to align the curves, creating the illusion of a correlation even when the variables are unrelated. Such spurious correlations result from the  freedom of choice in both scales and often goes unnoticed by readers as recalled in \cite{Vigen2015}.
 
 In Figure \ref{fig:dual-axis}, we borrowed a brilliant demonstration from \cite{muth2018} with six charts using the same time-series data but different dual-axis scaling strategies, to showcase how different is the  perception of the relationships between the two curves in the six graphics  and how \textit{spurious correlations} can emerge purely from axis choices.
 
@@ -253,29 +252,52 @@ In Figure \ref{fig:dual-axis}, we borrowed a brilliant demonstration from \cite{
 \label{fig:dual-axis}
 \end{figure}
 
-Empirical research has shown that users find dual‑axis charts increase cognitive load and are  more difficult to interpret accurately \cite{Isenberg2011}. Authors recommend aligning multiple plots (side-by-side or bottom and top) as they are easier to understand, while \cite{Ellis2016Dual-axis}  explains the Do’s and Don’ts of creating dual axis charts.
+Empirical research has shown that users find dual‑axis charts increase cognitive load and are  more difficult to interpret accurately \cite{Isenberg2011}. Authors recommend aligning multiple plots (side-by-side or bottom and top) as they are easier to understand \citep{Leo2019economist}, while \cite{Ellis2016Dual-axis}  explains the Do’s and Don’ts of creating dual axis charts. As an alternative \cite{few2008dual} and \cite{muth2018} suggest to plot indexed values converting each variable to a percentage change based on a reference year. This would standardize the two variables to a common scale, reestablishing  the role of the initial comparison of two trends for two variables with same unit. In the case of time series, an interesting alternative  would be  to use a connected scatterplot, where time is eliminated with each variable being on one axis \cite{Evergreen2020Dual}.
 
-As an alternative \cite{few2008dual} and \cite{muth2018} suggest to plot indexed values converting each variable to a percentage change based on a reference year. This would standardize the two variables to a common scale, reestablishing  the role of the initial comparison of two trends for two variables with same unit. In the case of time series, an interesting alternative  would be  to use a connected scatterplot, where time is eliminated with each variable being on one axis \cite{Evergreen2020Dual}.
+\subsection*{Rule \#4: Select Your Scope}
 
+Choosing the range or scope of a visualization is a powerful editorial decision. Truncating time series, limiting geographic scope, or narrowing axis ranges can subtly or dramatically alter the narrative derived from data, leading to distorted interpretations \citep{Cairo2019}.  This practice, sometimes associated to  \textit{Cherry-picking},  is likely to occur in time series with a period starting from an "\textit{interesting}" date can exaggerate apparent growth or decline in the evolution of any indicator. We illustrate this point in Figure \ref{fig:exchangerate} with the  GDP to USD exchange rate during the Brexit negotiations between the UK and the EU in 2017.  
 
+\begin{figure}
+\includegraphics[width = 0.45\linewidth]{GBP-USDRate-Brexiters-Zoom.jpg} \hspace{0.55cm}\includegraphics[width = 0.45\linewidth]{GBP-USDRate-5Y-Annotated.jpg}
+\caption{The GBP to USD exchange rate appears increasing (left)  when cleverly "picked"  (by Brexit partisans) within a global declining period (right)}
+\label{fig:exchangerate}
+\end{figure}
+ 
+In scatter plots, omitting certain ranges can hide outliers or falsely strengthen correlations. Similarly, in thematic maps, showing only certain countries or regions without providing a global context may lead to biased geographic perceptions of a global phenomenon as illustrated in \cite{bahoken2018English}.
 
-\subsection{Rule \#4: Select Your Scope}
-Cherry-picking the data through an (in)appropriate choice of the range in any time series, is alsovery misleading. This is particularly true for time serie and scatter plots but can also change the representation of maps when only a part of the world is selected as illustrated in \cite{bahoken2020}.
+This issue is especially critical in the context of Official Statistics and Sustainable Development Goals (SDGs), where selective framing may appear due a lack of data, inadvertently overstating or understating progress in specific areas, or for a specific time range. 
 
-\begin{center}
-\includegraphics[width = 0.4\linewidth]{GBP-USDRate-Brexiters-Zoom.jpg} \hspace{0.5cm}\includegraphics[width = 0.4\linewidth]{GBP-USDRate-5Y-Annotated.jpg}
-\captionof{figure}{\color{DarkSlateGray} {A growing exchange rate (left) "picked" within a declining period (right)}}
+Scope limitations are choices and are always necessary due to data availability or policy focus. These choices should be justified and clearly indicated in the legend or caption in full transparency.  For NSOs reporting on global indicators, it is essential to maintain consistent baselines and full scopes, unless justified by data and context and to prioritize a general-to-specific approach in any narrative. 
 
-\end{center}
+\subsection{Rule \#5: Use Pie Charts}
 
-\subsection{Rule \#5: Use Several Pie Charts}
-Pie charts are among the most popular and most used graphics although they are not suited for fair comparisons (\cite{Cleveland1984})
-\begin{center}
-\includegraphics[width = 0.7\linewidth]{Compare3Pies.png}
-\captionof{figure}{\color{DarkSlateGray} {Comparing pie charts can be a difficult visual test and should be avoided}}
-\end{center}
+Pie charts are widely used in official statistics, as well as in many publication, due to their apparent simplicity and familiarity among the general public, enabling readers to perceive proportions with clarity and minimum cognitive effort \citep{cairo2016truthful}. However, pie charts effectiveness is highly contingent upon the underlying data distribution  that is unknown before visualization is attempted. 
 
-\subsection{Rule \#6: Use Areas}
+\begin{figure}[tbh]
+\includegraphics[width = 0.9\linewidth]{Compare3Pies.png}
+\caption{Comparing pie charts can be a difficult visual test: In which graphic(s) the category "b" (light blue)  is greater that category "c" (pink)? }
+\label{fig:PieCharts}
+\end{figure}
+
+In Figure \ref{fig:PieCharts}, for example,  even an experienced reader may find difficult to identify the largest sector in each chart and, will find extremely difficult to tell with confidence in which graphic(s) the category "b" (light blue)  is greater than category "d" (gray).\footnote{The answer is provided in Figure \ref{fig:PieChartsBars} at the end of the paper. }
+
+The perceptual limitations of humans in judging angles make it challenging to accurately compare slices that differ only slightly in size \citep{Cleveland1984}. Furthermore, unlike bar charts, pie charts lack a common baseline for direct comparison, a crucial feature in data visualization \citep{wong2013}.
+
+While pie charts can effectively show part-to-whole relationships in cases where there are only a few, clearly dominant categories, they become difficult to interpret as the number of segments increases as highlighted in Figure \ref{fig:multiplepie}.
+
+\begin{figure}[tbh]
+\centering
+\includegraphics[width=0.45\linewidth]{Pie11Categories.png} 
+\hspace{0.55cm}
+\includegraphics[width=0.45\linewidth]{Pie4Categories.png} 
+\caption{Pie charts with multiple categories become cluttered and difficult to visualize (left) while grouping categories can help (right) the shares may still be difficult to compare. }
+\label{fig:multiplepie}
+\end{figure}
+
+ Given these drawbacks, official statistics producers should consider using bar charts or dot plots instead, particularly when the priority is to enable precise comparisons.
+
+\subsection{Rule \#6: Use Areas -- TBR}
 Our perception of areas is very bad but area-based comparisons still flourishing in publication, in particular in statistical maps where buble maps are one of the most popular encoding (see rule \#10)
 
 \begin{center}
@@ -283,6 +305,7 @@ Our perception of areas is very bad but area-based comparisons still flourishing
 \captionof{figure}{\color{DarkSlateGray} {A simple exercise show that people think 2 pizzas are bigger than one }}
 
 \end{center}
+
 
 
 \subsection{Rule \#7: Use unaligned bars}
@@ -311,7 +334,7 @@ Comparing individuals in many dimension is challenging, even when the sample in 
 
 \subsection{Rule \#10: Use Maps}
 Maps are probably the most complex graphical objects and are prone to many issues as documented by \cite{Monmonier1991} and others. Statistical maps use all the visual encoding described here, and thus concentrate all the problems hindering fair visual tests.
-
+see this
 \begin{center}
 \includegraphics[width = 0.45\linewidth]{BubbleMapC.png} \includegraphics[width = 0.45\linewidth]{BubbleMapSquaresC.png} \\
 \includegraphics[width = 0.45\linewidth]{BubbleMapBarsC.png} \includegraphics[width = 0.45\linewidth]{BubbleMapChoroplethC.png}
@@ -326,8 +349,23 @@ Maps are probably the most complex graphical objects and are prone to many issue
 
 \section{Conclusion \& recommendations}
 
+
+\subsubsection{Other distorsion, biais}
+- Gender and colors \cite{muth2018color}
+- Icons 
+- colors (ciltural and colorblindness) \cite{mccandless2012information}
+ "Cultural considerations are important if one wants to
+reach an international audience, since yellow can on the one hand represent health to Chinese people,
+while at the same time symbolising illness to Japanese and Hindu people."
+* Inclusive dataviz \cite{Schwabish2022}
+
+
 Since the publication of \cite{Bertin1977}, a lot has been learned on the design of statistical information and on the use of data visualization as a visual language, with a clear semiology. Many publications have highlighted good practices for quite a long time (see the "old" \cite{Brinton1914}), but despite this abundant literature, very few articles have illustrated the dangers  of  easy-to-produce and popular  graphics. We should not let these useful visual tests be biased by software default settings, misconceived designs or uninformed statisticians.
 
+
+\subsubsection*{\textbf{To Cite here: }}
+
+\cite{Umbach2022Literacy} "Contemporary political and professional life requires distinct types of skills and literacies related to statistics and data. These include among others information and media literacy; communication and visualisation literacy; digital literacy; computational and machine learning literacy; statistical and ethical literacy." Also a reveiw of other papers! 
 
 
 \newpage
@@ -352,8 +390,39 @@ This work was initiated a long time ago and find its roots in a series of lectur
 GenAI tools (ChatGPT, CoPilot) have been used for the writing of this paper, mainly as 
  as helpers for English editing and reformulation of complex sentences. Some of the graphics benefited from pieces of code generated by these tools as well. Example of prompts include "\textit{Rewrite that sentence in literate English}",  "\textit{Adjust the code in R for including text inside the graphic}", or \textit{"Create a \LaTeX - Tikz code for 2 framing designs with synthetic  time series"}.
  
-
+ \subsubsection*{Solution to pie chart question}
+\begin{figure}[!h]
+\includegraphics[width =0.9\textwidth]{Compare3PiesBars.png} 
+\caption{Depending on the data, it may be very difficult to compare categories within and  across pie charts, while some other graphical forms,  such as bar charts, unambiguously reveal the information. Here, the category "b" (light blue)  is greater than category "d" (gray) only in graphic III.}
+\label{fig:PieChartsBars}
+\end{figure}
 
 %----------------------------------------------------------------------------------------
+\section{Leftovers}
+
+\subsection*{The Misleading Nature of Surface-Based Comparisons}
+
+A common pitfall in data visualization is the use of surfaces — such as circles, squares, or other geometric shapes — to represent quantitative values. Although visually appealing, surface-based encodings are prone to misinterpretation because human perception is ill-equipped to accurately compare areas \citep{Cleveland1984,Spence1990}. This has serious implications in official statistics, where misleading visual impressions can affect public understanding and trust.
+
+For example, in population statistics or economic indicators, using proportional symbols on maps (e.g., bubble maps) or scaled pictograms to represent magnitude can lead to systematic underestimation or overestimation of differences. 
+
+\citet{Huang2016} found that viewers consistently struggle to compare the area of non-aligned shapes, leading to poor estimations, particularly in thematic cartography. Moreover, \citet{Tufte2001} warns against "chartjunk" that emphasizes aesthetic appeal over data integrity — a common occurrence when surfaces are used for storytelling instead of analysis.
+
+One frequent case is the misuse of pictographs or icon-based charts in sustainable development reports to represent statistics such as literacy rates or unemployment, where each icon's size or number suggests a quantity. Without a consistent baseline or scale, such visuals can distort the viewer’s interpretation of the magnitude.
+
+Given these risks, official statistics producers are encouraged to favor position-based encodings (e.g., bar charts or dot plots), which enable more accurate and consistent comparisons. When surfaces must be used (e.g., in proportional symbol maps), visual literacy and careful design (including legends, scale cues, and perceptual testing) become essential.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+\draw (0,0) circle (0.6cm);
+\draw (2,0) circle (0.6cm);
+\draw (6,0) circle (0.9cm);
+\node at (1,-1.5) {Surface of 2 small disks};
+\node at (6,-1.5) {Surface of a big disk};
+\end{tikzpicture}
+\caption{Each of 2 small disks (radius 6) has a surface  $\simeq$ 113,  while a single disk (radius 9) 	has a surface of $\simeq$ 254.47. The surface of the big disk is more than double the surface of the small disk.}
+\label{fig:areaillusion}
+\end{figure}
 
 \end{document} 
