@@ -332,7 +332,7 @@ One of the main issues with radar charts is their sensitivity to the ordering of
 \end{figure}
 
 
-\cite{Bertin1983} seminal work as shown that the visual perception of data is highly influenced by the order in which elements are presented. This is a critical issue here because  radar plot  are precisely used to interpret areas as a proxy for overall performance and radar shapes  used for comparisons of entities while these representation are highly unreliable \citep{Bontemps2017, holtz2020radar}. 
+\cite{Bertin1983English} seminal work as shown that the visual perception of data is highly influenced by the order in which elements are presented. This is a critical issue here because  radar plot  are precisely used to interpret areas as a proxy for overall performance and radar shapes  used for comparisons of entities while these representation are highly unreliable \citep{Bontemps2017, holtz2020radar}. 
 
 This issue is particularly critical in Official Statistics and SDG reporting, where multiple goals or targets are tracked across countries or regions. With radar plots, the perceived differences can be exaggerated or obscured depending on the order in which variables are presented, often dictated by software defaults with no questioning on its impact on the resulting interpretations. 
 
@@ -421,9 +421,9 @@ However, symbol maps are not without problems. As \citet{Cleveland1984} notes, h
 In short, neither map type is inherently superior. The choice must depend on the variable of interest (rate vs. count), spatial granularity, and the visual task at hand. For official statistics, where both fairness and clarity are critical, the decision between a choropleth and a symbol map should be treated as part of the statistical reasoning—not left to default templates in mapping software.
 
 
-Perhaps most critically, maps invite readers to assume they are seeing “everything.” Yet what’s excluded—a region, an indicator, or a time period—matters just as much . As such, statistical mapping must be approached with the same critical thinking that statisticians apply to modeling assumptions: What is included? What is excluded? Who chose the projection? Why this legend? \cite{Houtum2020MapsArrows}.
+Perhaps most critically, maps invite readers to assume they are seeing “everything.” Yet what’s excluded—a region, an indicator, or a time period—matters just as much . As such, statistical mapping must be approached with the same critical thinking that statisticians apply to modeling assumptions: What is included? What is excluded? Who chose the projection? Why this legend? \citep{Houtum2020MapsArrows}.
 
-Maps, then, are not neutral containers of data. They are arguments. And as such, producers of official statistics must scrutinize them with the same rigor they apply to any other form of evidence.
+Maps are not neutral containers of data. They are arguments and as such, producers of official statistics must scrutinize them with the same rigor they apply to any other form of evidence.
 
 
 %----------------------------------------------------------------------------------------
@@ -433,27 +433,44 @@ Maps, then, are not neutral containers of data. They are arguments. And as such,
 \section{Conclusions \& recommendations}
 
 
-The aim of this article is to cultivate a healthy skepticism toward data visualizations—not to encourage cynicism, nor to imply that all graphics are intentionally deceptive. Just like statistics, texts, or photographs, data visualizations are authored artefacts. Most of the time, they are constructed  with good intent, sometimes with less care, and occasionally under the influence of bias, ideology, or misunderstanding. In the field of official statistics, where trust and neutrality are fundamental, this makes it essential to recognize that visualizations can mislead through design choices as much as through data selection or any other statistical bias. Exploring how visualizations can go wrong is not merely a critique, it also offers a practical introduction to how graphics work, how they are perceived, why they matter, and how they can be improved or used differently.
+The aim of this article is to cultivate a healthy skepticism toward data visualizations—not to encourage cynicism, nor to imply that all graphics are intentionally deceptive. Just like statistics, texts, or photographs, data visualizations are authored documents using a specific visual language \citep{Bertin1983English}. Most of the time, these data-based representations are constructed  with good intent, sometimes with less care, and occasionally under the influence of bias, ideology, or misunderstanding. In the field of official statistics, where trust and neutrality are fundamental, this makes it essential to recognize that visualizations can mislead through design choices as much as through data selection or any other statistical bias. Exploring how visualizations can go wrong is not merely a critique, it also offers a practical introduction to how graphics work, how they are perceived, why they matter, and how they can be improved or used differently.
 
-\subsubsection{Other distorsion, biais}
-- Gender and colors \cite{muth2018color}
-- Icons 
-- colors (ciltural and colorblindness) \cite{mccandless2012information}
- "Cultural considerations are important if one wants to
-reach an international audience, since yellow can on the one hand represent health to Chinese people,
-while at the same time symbolising illness to Japanese and Hindu people."
-* Inclusive dataviz \cite{Schwabish2022}
+A lot has been learned on the design of statistical information and on the use of data visualization as a visual language, with a clear semiology - see the "old" manual by \cite{Brinton1914}. But despite this abundant literature, very few articles have illustrated the dangers of popular, easy-to-produce graphics that populate official statistics publication and SDG reports. As for statistics, traps, paradoxes and caveats are numerous and are not limited to the  examples presented here.
+
+Distortions and visual lies  in data visualization do not only arise from axes or scaling choices; they can also result from subtler design decisions. Color, for instance, is a powerful visual cue but carries cultural, gender and perceptual biases. A map with proportional symbols  bearing red circles over black background can convey a frightening message as compared to a more neutral blue over gray choice \cite{bahoken2018English}. As \cite{mccandless2012information} notes, the same color can also have very different meanings across cultures. Yellow may signify health in China but illness in Japan or Hindu contexts. This can potentially affect the perception of any yellow item for international audiences. 
+
+ To capture public interest, and create engaging stories, infographics and the use of icons are  often used. These appealing visuals are  particularly effective, distilling complex analyses into accessible images that quickly convey key messages  to audiences with limited time or technical expertise \citep{page2021DTVCovid}. However, here again, the use of icons and pictograms introduces further risks, and threats to   graphical integrity when symbols are enlarged in proportion to the value they represent \citep{Tufte2001}. Also, these icons, together with their colors may reinforce stereotypes on, \textit{e.g.}, gender, age, wealth or specific locations \cite{or2013data, UNVolunteers2020}.
+
+ Accessibility adds another layer of complexity since approximately 8\% of men and 0.5\% of women have color vision deficiencies, making certain color palettes unusable unless adapted with color-blind safe schemes and redundant encoding \citep{muth2018color}.  Following the Leave-No-One-Behind principles,  \citet{Schwabish2022}  promotes inclusive visualization that should ensure that everyone, regardless of ability, gender, or cultural background, can interpret graphics accurately and without bias. This goes beyond color to encompass gender-neutral language, representation choices, and culturally sensitive design principles. For official statistics, where neutrality and trust are essential, applying these principles is not optional but  fundamental features for any communication.
+ 
+As noted by  \cite{sabbati2022Literacy}, data visualization readers should be able to build a story from the data visualization they see, ask the right questions and get a correct answer from the publication they see. The key component - the graphic itself - should be designed thoughtfully to truly convey the intended message for the intended audience,  being data-literate or not. A data-literate audience is obviously more likely to question the narrative than to misinterpret it, but still, as we have highlighted here, some design choices, some default options, and sometimes some data sets associated with a lack of awareness of graphics caveats can lead to a misleading interpretation, even among the most visually-literate of us. This highlights  the importance of training in the fields of data visualization, visual literacy and in critical thinking in both producing and consuming visualizations.
+
+
+\subsubsection*{leftovers and drafts}
+
+We should not let these useful visual tests be biased by software default settings, misconceived designs or uninformed statisticians.
 
 
 
 
-Since the publication of \cite{Bertin1977}, a lot has been learned on the design of statistical information and on the use of data visualization as a visual language, with a clear semiology. Many publications have highlighted good practices for quite a long time (see the "old" \cite{Brinton1914}), but despite this abundant literature, very few articles have illustrated the dangers  of  easy-to-produce and popular  graphics. We should not let these useful visual tests be biased by software default settings, misconceived designs or uninformed statisticians.
+\section{Other Sources of Distortion and Bias in Data Visualization}
+
+The use of icons and pictograms introduces further risks when symbols are ambiguous or reinforce stereotypes, as highlighted in the \textit{Financial Times Visual Vocabulary} guidelines \citep{FTVisualVocab}. Inclusivity goes beyond color to encompass gender-neutral language, representation choices, and culturally sensitive design principles. As \citet{Schwabish2022} emphasizes, inclusive visualization aims to ensure that everyone—regardless of ability, gender, or cultural background—can interpret graphics accurately and without bias. For official statistics, where neutrality and trust are essential, applying these principles is not optional but fundamental to credible communication.
+
+
+
+
+
 
 
 \subsubsection*{\textbf{To Cite here: }}
 
 \cite{sabbati2022Literacy}   So, what about \textbf{ethics} in data analysis and visualisation? Cutting the axis distorts the message, it makes the picture less clear, and does not inspire trust. We should not manipulate the representation of data to give the message that we want or that somebody else wants.
 Like any other field, there are ethics for data scientists that need to be followed. Being aware of these provides added value for data-literate persons as it allowed them to more easily spot unethical behaviour at any step of the process. In data collection for instance, there can be bias through posing the wrong question; in the visualisation, not including outliers or presenting only figures that shows positive output; in a survey, when the differences in values are not statistically significant. \textbf{Ethics in statistics and therefore in data literacy, are important to give the right direction to be objective and reflect the truth.}
+
+
+
+
 
 
 
