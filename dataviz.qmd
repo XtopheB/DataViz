@@ -6,14 +6,14 @@ format: html
 ::: {.cards}
 
 ::: {.card}
-![](images/porto/alberto_cairo.png)
+![](images/BPLIM2020.jpg)
 
 ### Porto Data Visualization Workshop  
 *December 2020*
 
 Co-organized with BPLIM and Banco de Portugal.
 
-**Speakers**: Alberto Cairo, Yan Holtz, Chiara Sotis, Christophe Hurter  
+**Speakers**: Alberto Cairo, Christophe Bontemps, Yan Holtz, Chiara Sotis, Christophe Hurter  
 
 [Program](http://data.visualisation.free.fr/Papers/WS_BPLIM2020_DataViz_Program_Site.pdf)  
 [Keynote slides](http://data.visualisation.free.fr/Papers/BancoDePortugal2020.pdf)  
