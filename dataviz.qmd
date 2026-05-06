@@ -3,91 +3,107 @@ title: "Dataviz talks & Events"
 format: html
 ---
 
-::: {.cards}
+::::::::::::: cards
+::: card
+![](images/PaperCoverSJIAOS2026.png)
 
-::: {.card}
+### How to Lie With Graphics - Paper (2016)
 
+*May 2026*
+
+Bontemps C. *How to lie with graphics*. Statistical Journal of the IAOS. 2026; 0(0). <doi:10.1177/18747655261445392>
+
+[Working Paper](images/IAOS-HowToLieWithGraphics-WP.pdf)\
+[Published version](doi:10.1177/18747655261445392)\
+[Webinar (SIAP's Course)](https://www.unsiap.or.jp/on_line/2024/DTV/E_DTV2024-SecondWebinar.mp4)
+:::
+
+::: card
 ![](images/BPLIM2020.jpg)
 
-### Data Visualization Workshop -Porto 
+### Data Visualization Workshop -Porto
+
 *December 2020*
 
 Scientific program curator.
 
-**Speakers**: Alberto Cairo, Christophe Bontemps, Yan Holtz, Chiara Sotis, Christophe Hurter  
+**Speakers**: Alberto Cairo, Christophe Bontemps, Yan Holtz, Chiara Sotis, Christophe Hurter
 
-[Program](http://data.visualisation.free.fr/Papers/WS_BPLIM2020_DataViz_Program_Site.pdf)  
-[Keynote slides](http://data.visualisation.free.fr/Papers/BancoDePortugal2020.pdf)  
+[Program](http://data.visualisation.free.fr/Papers/WS_BPLIM2020_DataViz_Program_Site.pdf)\
+[Keynote slides](http://data.visualisation.free.fr/Papers/BancoDePortugal2020.pdf)\
 [Videos](https://youtu.be/IDs4InpQ0Zw?list=PLUZo4TFBklMYZhiVPzuV_Oxaqay2WbQIM)
 :::
 
-
-::: {.card}
+::: card
 ![](images/MIAT2009.jpg)
 
-### How to Lie with Graphics  
+### How to Lie with Graphics
+
 *2019–2020*
 
 Seminars (MIAT, ENS Lyon, INRAE).
 
-[MIAT slides](http://data.visualisation.free.fr/Blog/HowToLie-Short.pdf)  
+[MIAT slides](http://data.visualisation.free.fr/Blog/HowToLie-Short.pdf)\
 [ENS slides](http://data.visualisation.free.fr/Blog/HowToLie-Short-ENS.pdf)
 :::
 
-::: {.card}
+::: card
 ![](images/Caussade2019.jpg)
 
-### Comment mentir avec des graphiques  
+### Comment mentir avec des graphiques
+
 *2019*
 
 Fête de la Science & Meetup.
 
-[Slides](http://data.visualisation.free.fr/Blog/Mentir6.pdf)  
-[Video](https://vimeo.com/381895600)
+[Slides](http://data.visualisation.free.fr/Blog/Mentir6.pdf)
+[Media coverage](https://www.ladepeche.fr/2019/10/11/fete-de-la-science-comment-faire-parler-les-chiffres,8472313.php)
 :::
 
-::: {.card}
+::: card
 ![](images/Bordeaux2019.jpg)
 
-### How to Lie with Graphics  
+### How to Lie with Graphics
+
 *March 2019*
 
 Invited talk (Bordeaux).
 
-[Slides](https://framadrive.org/s/nWZsk8XMx5XNfxX#pdfviewer)  
+[Slides](https://framadrive.org/s/nWZsk8XMx5XNfxX#pdfviewer)\
 [Video](http://data.visualisation.free.fr/Videos/HowToLieFinal/HowToLieFinal.html)
 :::
 
-::: {.card}
+::: card
 ![](images/TDVVistorian2019.jpg)
 
+### Vistorian & Bertifier
 
-
-### Vistorian & Bertifier  
 *January 2019*
 
 Visualization tools (AVIZ, INRIA).
 
-[Slides](https://speakerdeck.com/alaino/the-vistorian-and-the-bertifier)  
+[Slides](https://speakerdeck.com/alaino/the-vistorian-and-the-bertifier)\
 [Video](https://vimeo.com/310955855)
 :::
 
-::: {.card}
+::: card
 ![](images/TTDDataScience2018.jpg)
 
-### Data Visualization for Data Scientists  
+### Data Visualization for Data Scientists
+
 *2018*
 
 Concepts + practice for data science.
 
-[Slides](https://speakerdeck.com/toulousedatascience/number-26-la-data-visualisation-pour-la-data-science-et-les-data-scientists)  
+[Slides](https://speakerdeck.com/toulousedatascience/number-26-la-data-visualisation-pour-la-data-science-et-les-data-scientists)\
 [Video](http://data.visualisation.free.fr/Videos/DataViz4DataScience/MeetupTDS/MeetupTDS.html)
 :::
 
-::: {.card}
+::: card
 ![](images/TDVShiny2017.jpg)
 
-### Shiny is Good for You  
+### Shiny is Good for You
+
 *2017*
 
 Intro to interactive apps in R.
@@ -95,10 +111,11 @@ Intro to interactive apps in R.
 [Slides](http://data.visualisation.free.fr/Blog/MeetupShiny.pdf)
 :::
 
-::: {.card}
+::: card
 ![](images/TDVRadar2017.png)
 
-### Why You Should Never Use Radar Plots  
+### Why You Should Never Use Radar Plots
+
 *2017*
 
 On distortion in visual encoding.
@@ -106,16 +123,16 @@ On distortion in visual encoding.
 [Blog](http://data.visualisation.free.fr/Blog/Why-you-should-never-use-radar-plots.nb.html)
 :::
 
-::: {.card}
+::: card
 ![](images/TDVMapsAndNetwork2017.png)
 
-### Maps & Networks  
+### Maps & Networks
+
 *2017*
 
 Visualization principles for spatial/network data.
 
-[Slides](https://fr.slideshare.net/ChristopheBontemps/meetup-maps-networks-why-and-how-to-visualize)  
+[Slides](https://fr.slideshare.net/ChristopheBontemps/meetup-maps-networks-why-and-how-to-visualize)\
 [Video](http://data.visualisation.free.fr/Videos/MapsAndNetworks/MapsAndNetworks.html)
 :::
-
-:::
+:::::::::::::
