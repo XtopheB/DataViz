@@ -1,0 +1,189 @@
+---
+title: "Data Visulaization Talks and  Events"
+---
+
+
+
+## Porto Data Visualization Workshop  
+*December 2020 (with BPLIM and Banco de Portugal)*
+
+I co-organized this 2-day workshop bringing together leading experts in data visualization, including **Alberto Cairo**, **Yan Holtz**, **Chiara Sotis**, and **Christophe Hurter**. A dedicated training session was also organized for participants.
+
+The videos of this event are online. See the [program](http://data.visualisation.free.fr/Papers/WS_BPLIM2020_DataViz_Program_Site.pdf).
+
+### Keynote
+
+**Alberto Cairo** (University of Miami)  
+*How to Make Decisions in Data Visualization*  
+[Slides](http://data.visualisation.free.fr/Papers/BancoDePortugal2020.pdf)  
+[Video](https://youtu.be/IDs4InpQ0Zw?list=PLUZo4TFBklMYZhiVPzuV_Oxaqay2WbQIM)
+
+![](images/porto/alberto_cairo.png){width=150px}
+
+---
+
+### Talks
+
+**Christophe Bontemps**  
+*How to Lie With Graphics*  
+[Slides](http://data.visualisation.free.fr/Papers/Part1-HowToLie.pdf)  
+[Video](https://youtu.be/_hCsnF5R9Bk)
+
+![](images/porto/how_to_lie.png){width=150px}
+
+---
+
+### Workshops
+
+**Yan Holtz (Datadog)**  
+*From Data to Visualization*  
+[GitHub](https://github.com/holtzy/Talk)  
+[Video](https://youtu.be/cfFgQxD7grY?list=PLUZo4TFBklMYZhiVPzuV_Oxaqay2WbQIM)
+
+![](images/porto/yan_holtz.png){width=150px}
+
+---
+
+**Christophe Hurter (ENAC)**  
+*Data-Driven Storytelling and Emerging Presentation Technologies*  
+[Video](https://youtu.be/3sLHgBfwLoE?list=PLUZo4TFBklMYZhiVPzuV_Oxaqay2WbQIM)
+
+![](images/porto/hurter.png){width=150px}
+
+---
+
+**Chiara Sotis (LSE)**  
+*The scale of COVID-19 graphs affects understanding, attitudes, and policy preferences*  
+[Paper](http://data.visualisation.free.fr/Papers/Chiara%20SotisPaperLSE.pdf)  
+[Video](https://youtu.be/FEMnNQKpv1o)
+
+![](images/porto/sotis.png){width=150px}
+
+---
+
+## #hackaviz2020  
+*March 2020*
+
+Co-organized with Toulouse DataViz. Despite COVID-19, the contest gathered 37 contributions and was fully online.
+
+- [All submissions](http://toulouse-dataviz.fr/resultats-hackaviz-2020)  
+- [Live Twitch recording](https://vimeo.com/401537326)
+
+![](images/hackaviz/twitch.jpg){width=300px}
+
+---
+
+## How to Lie with Graphics  
+*2019–2020 (MIAT, ENS Lyon, SMART-LERECO)*
+
+A structured seminar series on misleading graphics and visual distortions.
+
+- [MIAT slides](http://data.visualisation.free.fr/Blog/HowToLie-Short.pdf)  
+- [ENS Lyon slides](http://data.visualisation.free.fr/Blog/HowToLie-Short-ENS.pdf)  
+- [SMART-LERECO slides](http://data.visualisation.free.fr/Blog/HowToLie-Short-SMART.pdf)
+
+![](images/howtolie/miat1.jpg){width=250px}
+![](images/howtolie/miat2.jpg){width=250px}
+
+---
+
+## Comment mentir avec des graphiques ?  
+*October–December 2019*
+
+Presented at Fête de la Science and Toulouse DataViz Meetup.
+
+- [Slides](http://data.visualisation.free.fr/Blog/Mentir6.pdf)  
+- [Meetup slides](http://data.visualisation.free.fr/Blog/HowToLie-Meetup.pdf)  
+- [Video](https://vimeo.com/381895600)
+
+![](images/mentir/poster.jpg){width=200px}
+![](images/mentir/caussade.jpg){width=300px}
+
+---
+
+## How to Lie with Graphics  
+*March 2019, Bordeaux*
+
+Invited seminar on the “dark side” of data science.
+
+- [Slides](https://framadrive.org/s/nWZsk8XMx5XNfxX#pdfviewer)  
+- [Video](http://data.visualisation.free.fr/Videos/HowToLieFinal/HowToLieFinal.html)
+
+![](images/howtolie/sketchnote.jpg){width=150px}
+![](images/howtolie/video.jpg){width=300px}
+
+---
+
+## Tools: The Vistorian & The Bertifier  
+*January 2019*
+
+Presentation of two tools from the AVIZ team.
+
+- [Slides](https://speakerdeck.com/alaino/the-vistorian-and-the-bertifier)  
+- [Video](https://vimeo.com/310955855)
+
+![](images/tools/vistorian.jpg){width=350px}
+
+---
+
+## Selected Talks (2017–2018)
+
+### Data Visualization for Data Scientists  
+- [Slides](https://speakerdeck.com/toulousedatascience/number-26-la-data-visualisation-pour-la-data-science-et-les-data-scientists)  
+- [Video](http://data.visualisation.free.fr/Videos/DataViz4DataScience/MeetupTDS/MeetupTDS.html)
+
+![](images/talks/tds.jpg){width=350px}
+
+---
+
+### Shiny is Good for You!  
+- [Slides](http://data.visualisation.free.fr/Blog/MeetupShiny.pdf)
+
+![](images/talks/shiny.jpg){width=300px}
+
+---
+
+### Everybody’s Got to Cheat Sometimes  
+- [Blog](http://data.visualisation.free.fr/Blog/Everybody-got-to-cheat-sometimes.nb.html)  
+- [Video](http://data.visualisation.free.fr/Videos/Cheating/Cheating.html)
+
+![](images/talks/cheating.jpg){width=350px}
+
+---
+
+## Earlier Talks (2015–2017)
+
+### Why You Should Never Use Radar Plots  
+- [Blog](http://data.visualisation.free.fr/Blog/Why-you-should-never-use-radar-plots.nb.html)  
+- [Slides](http://data.visualisation.free.fr/Blog/MeetupRadar.pdf)
+
+![](images/radar/radar1.png){width=200px}
+![](images/radar/radar2.png){width=200px}
+
+---
+
+### Maps and Networks  
+- [Slides](https://fr.slideshare.net/ChristopheBontemps/meetup-maps-networks-why-and-how-to-visualize)  
+- [Video](http://data.visualisation.free.fr/Videos/MapsAndNetworks/MapsAndNetworks.html)
+
+![](images/maps/maps.jpg){width=350px}
+
+---
+
+### ENSAI 2016  
+- [Code](http://data.visualisation.free.fr/Ensai/Progs.zip)  
+- [Data](http://data.visualisation.free.fr/Ensai/Data.zip)  
+- [App](https://xtophedataviz.shinyapps.io/NpReg/)
+
+![](images/ensai/shinyreg.png){width=300px}
+
+---
+
+### Toulouse School of Economics  
+- [Video](http://data.visualisation.free.fr/Videos/VideoLectureDataVisualisationTSE/LectureDataVisualisationTSE.html)  
+- [Slides](http://data.visualisation.free.fr/Videos/VideoLectureDataVisualisationTSE/VisualizationGTFood.pdf)
+
+---
+
+### Institut Mathématique de Toulouse  
+- [Slides](http://perso.math.univ-toulouse.fr/les-cafes-de-l-imt/files/2014/09/VoirOuNePasVoir.pdf)
