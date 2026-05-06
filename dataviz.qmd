@@ -6,12 +6,13 @@ format: html
 ::: {.cards}
 
 ::: {.card}
+
 ![](images/BPLIM2020.jpg)
 
-### Porto Data Visualization Workshop  
+### Data Visualization Workshop -Porto 
 *December 2020*
 
-Co-organized with BPLIM and Banco de Portugal.
+Scientific program curator.
 
 **Speakers**: Alberto Cairo, Christophe Bontemps, Yan Holtz, Chiara Sotis, Christophe Hurter  
 
@@ -20,20 +21,9 @@ Co-organized with BPLIM and Banco de Portugal.
 [Videos](https://youtu.be/IDs4InpQ0Zw?list=PLUZo4TFBklMYZhiVPzuV_Oxaqay2WbQIM)
 :::
 
-::: {.card}
-![](images/hackaviz/twitch.jpg)
-
-### #hackaviz2020  
-*March 2020*
-
-Online data visualization contest (37 submissions).
-
-[All projects](http://toulouse-dataviz.fr/resultats-hackaviz-2020)  
-[Recording](https://vimeo.com/401537326)
-:::
 
 ::: {.card}
-![](images/howtolie/miat1.jpg)
+![](images/MIAT2009.jpg)
 
 ### How to Lie with Graphics  
 *2019–2020*
@@ -45,7 +35,7 @@ Seminars (MIAT, ENS Lyon, INRAE).
 :::
 
 ::: {.card}
-![](images/mentir/poster.jpg)
+![](images/Caussade2019.jpg)
 
 ### Comment mentir avec des graphiques  
 *2019*
@@ -57,7 +47,7 @@ Fête de la Science & Meetup.
 :::
 
 ::: {.card}
-![](images/howtolie/sketchnote.jpg)
+![](images/Bordeaux2019.jpg)
 
 ### How to Lie with Graphics  
 *March 2019*
@@ -69,7 +59,9 @@ Invited talk (Bordeaux).
 :::
 
 ::: {.card}
-![](images/tools/vistorian.jpg)
+![](images/TDVVistorian2019.jpg)
+
+
 
 ### Vistorian & Bertifier  
 *January 2019*
@@ -81,7 +73,7 @@ Visualization tools (AVIZ, INRIA).
 :::
 
 ::: {.card}
-![](images/talks/tds.jpg)
+![](images/TTDDataScience2018.jpg)
 
 ### Data Visualization for Data Scientists  
 *2018*
@@ -93,7 +85,7 @@ Concepts + practice for data science.
 :::
 
 ::: {.card}
-![](images/talks/shiny.jpg)
+![](images/TDVShiny2017.jpg)
 
 ### Shiny is Good for You  
 *2017*
@@ -104,7 +96,7 @@ Intro to interactive apps in R.
 :::
 
 ::: {.card}
-![](images/radar/radar1.png)
+![](images/TDVRadar2017.png)
 
 ### Why You Should Never Use Radar Plots  
 *2017*
@@ -115,7 +107,7 @@ On distortion in visual encoding.
 :::
 
 ::: {.card}
-![](images/maps/maps.jpg)
+![](images/TDVMapsAndNetwork2017.png)
 
 ### Maps & Networks  
 *2017*

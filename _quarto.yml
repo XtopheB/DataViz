@@ -7,10 +7,10 @@ website:
     pinned: true
     background: light
     left:
-      - href: academics.qmd
-        text: Academics
       - href: dataviz.qmd
         text: Data Visualization
+      - href: academics.qmd
+        text: Academics
       - href: training.qmd
         text: Training
     right:
