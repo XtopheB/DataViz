@@ -2,6 +2,31 @@
 title: "Xtophe Bontemps"
 ---
 
-## Quarto
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+## Your current role  
+*(e.g., Data Scientist | Official Statistics | Data Visualization)*
+
+---
+
+Your short bio goes here. Keep it tight:
+- who you are  
+- what you do  
+- what you care about  
+
+---
+
+::: {.columns}
+::: {.column width="50%"}
+### Focus areas
+- Official statistics  
+- Data visualization  
+- Machine learning  
+:::
+
+::: {.column width="50%"}
+### Current work
+- Training statisticians  
+- Research on data communication  
+- Applied analytics  
+:::
+:::
