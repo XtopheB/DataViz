@@ -3,6 +3,9 @@ title: "Dataviz talks & Events"
 format: html
 ---
 
+I have been working and teaching data visualization for a long time. Here are some of the talks and documents presented over the years, including my recently published article *"How To Lie with Graphics"* (2026).\ 
+Enjoy!
+
 ::::::::::::: cards
 ::: card
 ![](images/PaperCoverSJIAOS2026.png)
@@ -13,9 +16,9 @@ format: html
 
 Bontemps C. *How to lie with graphics*. Statistical Journal of the IAOS. 2026; 0(0). <doi:10.1177/18747655261445392>
 
-[Working Paper](images/IAOS-HowToLieWithGraphics-WP.pdf)\
-[Published version](doi:10.1177/18747655261445392)\
-[Webinar (SIAP's Course)](https://www.unsiap.or.jp/on_line/2024/DTV/E_DTV2024-SecondWebinar.mp4)
+[Working Paper](images/IAOS-HowToLieWithGraphics-WP.pdf){target="_blank"}\
+[Published version](https://journals.sagepub.com/doi/10.1177/18747655261445392){target="_blank"} (*paywall*)\
+[Webinar (SIAP's Course)](https://www.unsiap.or.jp/on_line/2024/DTV/E_DTV2024-SecondWebinar.mp4){target="_blank"}
 :::
 
 ::: card
@@ -25,12 +28,12 @@ Bontemps C. *How to lie with graphics*. Statistical Journal of the IAOS. 2026; 0
 
 *December 2020*
 
-Scientific program curator.
+Scientific program director - keynote.
 
 **Speakers**: Alberto Cairo, Christophe Bontemps, Yan Holtz, Chiara Sotis, Christophe Hurter
 
 [Program](http://data.visualisation.free.fr/Papers/WS_BPLIM2020_DataViz_Program_Site.pdf)\
-[Keynote slides](http://data.visualisation.free.fr/Papers/BancoDePortugal2020.pdf)\
+[Keynote slides](http://data.visualisation.free.fr/Papers/BancoDePortugal2020.pdf){target="_blank"}\
 [Videos](https://youtu.be/IDs4InpQ0Zw?list=PLUZo4TFBklMYZhiVPzuV_Oxaqay2WbQIM)
 :::
 
@@ -56,7 +59,7 @@ Seminars (MIAT, ENS Lyon, INRAE).
 
 Fête de la Science & Meetup.
 
-[Slides](http://data.visualisation.free.fr/Blog/Mentir6.pdf)
+[Slides](http://data.visualisation.free.fr/Blog/Mentir6.pdf){target="_blank"}
 [Media coverage](https://www.ladepeche.fr/2019/10/11/fete-de-la-science-comment-faire-parler-les-chiffres,8472313.php)
 :::
 
