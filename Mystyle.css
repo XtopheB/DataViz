@@ -156,6 +156,18 @@ img {
   margin: 1rem 0;
 }
 
+.profile-img {
+  border-radius: 6px;
+  max-width: 100%;
+  margin-top: 10px;
+}
+.logo {
+  display: block;
+  width: 120px;        /* keep it small */
+  margin: 10px 0 20px 0;
+  opacity: 0.9;        /* slightly muted = more elegant */
+}
+
 /* ================================
    10. Small polish
 ================================ */

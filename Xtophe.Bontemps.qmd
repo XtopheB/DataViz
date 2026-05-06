@@ -1,31 +1,51 @@
 ---
-title: "Xtophe Bontemps"
+title: "Christophe Bontemps"
 ---
 
 
-## Your current role  
-*(e.g., Data Scientist | Official Statistics | Data Visualization)*
 
----
+## Statistician lecturer 
+*Data Scientist | Official Statistics | Data Visualization| A.I.*|
 
-Your short bio goes here. Keep it tight:
-- who you are  
-- what you do  
-- what you care about  
+Statistical Institute for Asia and the Pacific 
+![](images/escap_siap_logo.png){.logo}
+***United Nations - ESCAP*** 
 
----
+
+
+::: {.columns}
+::: {.column width="65%"}
+
+Specialized in Big Data and Data Science, with a focus on A.I. (machine learning) and data visualization. Member of the UN Committee of Experts on Big Data and Data Science.
+
+Previously in academia at the Toulouse School of Economics, I have published several scientific papers and books in econometrics, data science, and environmental and food economics. I have a PhD in Applied Mathematics and master’s degrees in Econometrics and Computer Science from the University of Toulouse.
+
+
+:::
+
+::: {.column width="35%"}
+
+![](images/Christophe2024.jpg){.profile-img}
+
+:::
+:::
+
+
 
 ::: {.columns}
 ::: {.column width="50%"}
 ### Focus areas
-- Official statistics  
+- Machine learning & AI
+- Official statistics 
+- Data Science
 - Data visualization  
-- Machine learning  
+  
 :::
 
 ::: {.column width="50%"}
 ### Current work
-- Training statisticians  
+- Training statisticians 
+- Online teaching
 - Research on data communication  
 - Applied analytics  
 :::
