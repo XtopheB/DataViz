@@ -1,13 +1,10 @@
 This section is currently being prepared.\
 
-<<<<<<< HEAD
+
 It will present my academic work, including publications, research contributions, and ongoing projects.\  
 
 In the meantime, you can  check my official webpage at [Toulouse School of Economics](https://www.tse-fr.eu/people/christophe-bontemps?tab=bio-and-research-interests){target="_blank"}\
 
-=======
-In the meantime, you can  check my official webpage at [Toulouse School of Economics](https://www.tse-fr.eu/people/christophe-bontemps?tab=bio-and-research-interests){target="_blank"}\
->>>>>>> b4e9da5a4027fe532a11c49d0f5fc3e4302aa0c2
 
 
 Please check back soon.
