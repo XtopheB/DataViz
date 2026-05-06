@@ -4,6 +4,8 @@ project:
 website:
   title: "Xtophe Bontemps"
   navbar:
+    pinned: true
+    background: light
     left:
       - href: academics.qmd
         text: Academics
