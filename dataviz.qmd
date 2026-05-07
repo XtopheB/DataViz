@@ -10,7 +10,7 @@ Enjoy!
 ::: card
 ![](images/PaperCoverSJIAOS2026.png)
 
-### How to Lie With Graphics - Paper (2016)
+### How to Lie With Graphics - SJIAOS Paper (2026)
 
 *May 2026*
 
@@ -40,7 +40,7 @@ Scientific program director - keynote.
 ::: card
 ![](images/MIAT2009.jpg)
 
-### How to Lie with Graphics
+### How [not] to Lie with Graphics
 
 *2019–2020*
 
@@ -66,7 +66,7 @@ Fête de la Science & Meetup.
 ::: card
 ![](images/Bordeaux2019.jpg)
 
-### How to Lie with Graphics
+### How [not] to Lie with Graphics
 
 *March 2019*
 
