@@ -14,6 +14,7 @@ My research interests lie at the intersection of econometrics, data science with
 ---
 
 ## Selected Publications
+*(hover each publication's year for details, or browse the full list at the bottom)* 
 
 
 ## Data Visualization & Data Science
