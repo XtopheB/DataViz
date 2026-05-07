@@ -1,11 +1,13 @@
 ---
 title: "Academics"
 bibliography: CBontemps.bib
-csl: chicago-author-date.csl
+csl: mychicagocls.csl
 toc: false
+reference-section-title: "" 
+
 ---
 
-## Research
+# Research
 
 My research interests lie at the intersection of econometrics, data science with applications to food and environmental economics. I also have a deep interest in machine learning, and data visualization, with applications to official statistics.
 
@@ -14,57 +16,57 @@ My research interests lie at the intersection of econometrics, data science with
 ## Selected Publications
 
 
+## Data Visualization & Data Science
 
-### Data Visualization & Data Science
+- @bontemps2026
+- @bontemps2021FAIR
+- @orozco2020make
 
-- [@bontemps2026]
-- [@bontemps2021FAIR]
-- [@orozco2020make]
-- [@villa2016outils]
 
-### Econometrics
-- [@bontemps2008semiparametric]
-- [@bontemps2008encompassing]
-- [@bontemps2008parametric]
+## Econometrics
 
-### Environmental & Food Economics
+- @bontemps2008semiparametric
+- @bontemps2008encompassing
+- @bontemps2008concept
+- @bontemps2003congruence
 
-- [@bontemps2021risk]
-- [@bontemps2016impact]
-- [@bontemps2013quality]
-- [@bontemps2012technical]
-- [@bontemps2010firm]
-- [@bontemps2009pitcher]
-- [@bontemps2008private]
-- [@nauges2006drink]
-- [@bontemps2005price]
-- [@bontemps2003estimation]
-- [@bontemps2002irrigation]
-- [@bontemps2000dynamics]
+
+## Environmental & Food Economics
+
+- @bontemps2021risk
+- @bontemps2016impact
+- @bontemps2005price
+- @bontemps2013quality
+- @bontemps2012technical
+- @bontemps2009pitcher
+- @bontemps2008private
+- @nauges2006drink
+- @bontemps2005price
+- @bontemps2003estimation
+- @bontemps2002irrigation
+- @bontemps2000dynamics
 
 
 ## Books and translations
 
-- [@bontempscahuzac2008stata]
+- @bontempscahuzac2008stata
 
-- [@klein2015climate,]
-- [@klein2014macro,]
-- [@klein2012micro,]
-
----
-
-### Unpublished and Working papers
-
-- [@lenoir2017learner]
-- [@bontemps2017endogenous]
-- [@requillart2011technical]
-- [@bontemps2009nonparametric]
-- [@bontemps1995global]
+- @klein2019calculus
+- @klein2015climate
+- @klein2014macro
+- @klein2012micro
 
 ---
 
+## Unpublished and Working papers
 
-## Full Bibliography
+- @lenoir2017learner
+- @bontemps2017endogenous
+- @requillart2011technical
+- @bontemps2009nonparametric
+- @bontemps1995global
+
+---
 
 ::: {.references}
 :::
