@@ -7,43 +7,62 @@ toc: false
 
 ## Research
 
-My research interests lie at the intersection of econometrics, data science, machine learning, and data visualization, with applications to official statistics, environmental economics, and public policy.
+My research interests lie at the intersection of econometrics, data science with applications to food and environmental economics. I also have a deep interest in machine learning, and data visualization, with applications to official statistics.
 
 ---
 
 ## Selected Publications
 
+
+
 ### Data Visualization & Data Science
 
-- @bontemps2024dataviz
-- @orozco2020make
-- @bontemps2021FAIR
+- [@bontemps2026]
+- [@bontemps2021FAIR]
+- [@orozco2020make]
+- [@villa2016outils]
 
 ### Econometrics
-
-- @bontemps2018econometrics
-- @bontemps2015nonparametric
+- [@bontemps2008semiparametric]
+- [@bontemps2008encompassing]
+- [@bontemps2008parametric]
 
 ### Environmental & Food Economics
 
-- @bontemps2014food
-- @bontemps2012environment
+- [@bontemps2021risk]
+- [@bontemps2016impact]
+- [@bontemps2013quality]
+- [@bontemps2012technical]
+- [@bontemps2010firm]
+- [@bontemps2009pitcher]
+- [@bontemps2008private]
+- [@nauges2006drink]
+- [@bontemps2005price]
+- [@bontemps2003estimation]
+- [@bontemps2002irrigation]
+- [@bontemps2000dynamics]
+
+
+## Books and translations
+
+- [@bontempscahuzac2008stata]
+
+- [@klein2015climate,]
+- [@klein2014macro,]
+- [@klein2012micro,]
 
 ---
 
-## Books
+### Unpublished and Working papers
 
-- @bontempsbook2019
-- @bontempsbook2015
-
----
-
-## Conference Papers & Talks
-
-- @bontemps2020porto
-- @bontemps2019howtolie
+- [@lenoir2017learner]
+- [@bontemps2017endogenous]
+- [@requillart2011technical]
+- [@bontemps2009nonparametric]
+- [@bontemps1995global]
 
 ---
+
 
 ## Full Bibliography
 

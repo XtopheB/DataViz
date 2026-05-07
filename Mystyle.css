@@ -229,3 +229,18 @@ Cards
   margin-top: 6px;
   font-size: 0.9rem;
 }
+
+
+/* Bibliography styling */
+
+.csl-entry {
+  margin-bottom: 1.3rem;
+  line-height: 1.7;
+}
+
+.references {
+  margin-top: 2rem;
+  font-size: 0.98rem;
+}
+
+

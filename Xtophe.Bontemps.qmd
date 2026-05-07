@@ -4,7 +4,7 @@ title: "Christophe Bontemps"
 
 
 ## Statistician lecturer 
-*Data Scientist | Official Statistics | Data Visualization| A.I.*|
+*Data Science | Official Statistics | Data Visualization| A.I.*|
 
 Statistical Institute for Asia and the Pacific 
 ![](images/escap_siap_logo.png){.logo}
