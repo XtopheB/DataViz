@@ -1,5 +1,309 @@
-Content coming soon.
+---
+title: "My Training Activities"
+format:
+  html:
+    toc: true
+    page-layout: full
+execute:
+  echo: false
+  warning: false
+  message: false
+---
 
-This page will gather materials from workshops, courses, and talks on data visualization and data science, including slides, recordings, and resources.  
+```{r}
+library(tidyverse)
+library(lubridate)
+library(plotly)
+library(leaflet)
+library(DT)
+library(tidygeocoder)
+```
 
-Stay tuned.
+```{r}
+# Load data
+data.training <- read_csv("Data/CourseList.csv")
+
+# Clean variable names
+names(data.training) <- make.names(names(data.training))
+
+# Dates
+data.training$Start.date <- mdy(data.training$Start.date)
+data.training$End.date   <- mdy(data.training$End.date)
+
+# Men
+data.training <- data.training |>
+  rename(Nb =  N.part, 
+         Title = Topics)|>
+  mutate(
+    Men = Nb - N.Female
+  )
+
+# FILTER: methodology trainings
+
+methodology <- data.training |>
+  filter(
+    Category =="methodology"
+  )
+```
+
+A selection of training activities delivered across the Asia-Pacific region
+in data science, machine learning, and data visualization since my arrival at SIAP in 2020
+
+---
+
+## Face-to-Face Trainings (F)
+
+In-person workshops and trainings
+
+```{r}
+f2f <- methodology |>
+  filter(Form == "F" & Year >=2020) |>
+  arrange(desc(Year),desc(Start.date))
+```
+
+```{r}
+datatable(
+  f2f |>
+    select(
+      Year,
+      Start.date,
+      Title,
+      Location,
+      Nb,
+      N.Female
+    ),
+  rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(1, 'desc'))
+  ),
+  caption = "Face-to-face methodology trainings"
+)
+```
+
+---
+
+## E-Learning Trainings (EL)
+
+Online and remote trainings in survey methodology and official statistics.
+
+```{r}
+el <- methodology |>
+  filter(Form == "EL") |>
+  arrange(desc(Start.date))
+```
+
+```{r}
+datatable(
+  el |>
+    select(
+      Year,
+      Start.date,
+      Title,
+      Location,
+      Nb,
+      N.Female
+    ),
+  rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(1, 'desc'))
+  ),
+  caption = "E-learning methodology trainings"
+)
+```
+
+---
+
+# Participants Over Time
+
+```{r}
+participants_year <- methodology |>
+  group_by(Year) |>
+  summarise(
+    Women = sum(N.Female, na.rm = TRUE),
+    Total = sum(Nb, na.rm = TRUE)
+  ) |>
+  mutate(
+    Men = Total - Women
+  )
+```
+
+
+
+```{r}
+
+
+participants_year |>
+  pivot_longer(
+    cols = c(Men, Women),
+    names_to = "Gender",
+    values_to = "Participants"
+  ) |>
+
+  ggplot(aes(x = Year,
+             y = Participants,
+             color = Gender)) +
+
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2.5) +
+
+  scale_x_continuous(
+    breaks = participants_year$Year
+  ) +
+
+  scale_color_manual(
+    values = c(
+      "Men" = "orange",
+      "Women" = "purple"
+    )
+  ) +
+
+  labs(
+    title = "Participants per Year",
+    x = NULL,
+    y = "Participants",
+    color = NULL
+  ) +
+
+  theme_minimal(base_size = 14) +
+
+  theme(
+    legend.position = "top",
+    plot.title = element_text(face = "bold")
+  )
+```
+
+---
+
+# Asia-Pacific Training Map
+
+The map below shows locations where methodology-related trainings were delivered,
+with links from the UNSIAP area in Tokyo/Chiba to each destination.
+
+```{r}
+# GEOCODING
+# Automatically obtain coordinates from locations
+
+locations <- methodology |>
+  filter(Year >= 2020)|>
+  distinct(Location)
+
+coords <- locations |>
+  geocode(Location, method = "osm", lat = lat, long = lon)
+
+methodology_map <- methodology |>
+  left_join(coords, by = "Location") |>
+  filter(!is.na(lat))
+```
+
+```{r}
+# Tokyo / Chiba origin point
+origin_lat <- 35.6074
+origin_lon <- 140.1065
+```
+
+```{r}
+m <- leaflet(methodology_map) |>
+
+  addProviderTiles("CartoDB.Positron") |>
+
+  # Origin point
+  addCircleMarkers(
+    lng = origin_lon,
+    lat = origin_lat,
+    radius = 8,
+    color = "red",
+    fillOpacity = 1,
+    popup = "UNSIAP (Tokyo/Chiba)"
+  ) |>
+
+  # Training locations
+  addCircleMarkers(
+    lng = ~lon,
+    lat = ~lat,
+    radius = 5,
+    color = "navy",
+    popup = ~paste0(
+      "<b>", Title, "</b><br>",
+      Location, "<br>",
+      Year, "<br>",
+      Nb, " participants"
+    )
+  )
+```
+
+```{r}
+# Add links from Tokyo/Chiba
+
+for(i in 1:nrow(methodology_map)){
+
+  m <- m |>
+    addPolylines(
+      lng = c(origin_lon, methodology_map$lon[i]),
+      lat = c(origin_lat, methodology_map$lat[i]),
+      weight = 1.2,
+      opacity = 0.5
+    )
+}
+
+m
+```
+
+
+```{r}
+# Add curved links from Tokyo/Chiba
+library(leaflet.extras2)
+
+# Function to create curved line
+make_curve <- function(lon1, lat1, lon2, lat2, n = 100, curvature = 0.2){
+
+  t <- seq(0, 1, length.out = n)
+
+  # Midpoint
+  mid_lon <- (lon1 + lon2) / 2
+  mid_lat <- (lat1 + lat2) / 2
+
+  # Perpendicular offset for curvature
+  dx <- lon2 - lon1
+  dy <- lat2 - lat1
+
+  curve_lon <- mid_lon - curvature * dy
+  curve_lat <- mid_lat + curvature * dx
+
+  # Quadratic Bezier curve
+  lon <- (1 - t)^2 * lon1 +
+         2 * (1 - t) * t * curve_lon +
+         t^2 * lon2
+
+  lat <- (1 - t)^2 * lat1 +
+         2 * (1 - t) * t * curve_lat +
+         t^2 * lat2
+
+  tibble(lon, lat)
+}
+
+# Add curved lines
+for(i in 1:nrow(methodology_map)) {
+
+  curve <- make_curve(
+    origin_lon,
+    origin_lat,
+    methodology_map$lon[i],
+    methodology_map$lat[i],
+    curvature = 0.15
+  )
+
+  m <- m |>
+    addPolylines(
+      lng = curve$lon,
+      lat = curve$lat,
+      color = "steelblue",
+      weight = 1.2,
+      opacity = 0.5
+    )
+}
+
+m
+```
+
