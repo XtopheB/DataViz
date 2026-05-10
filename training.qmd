@@ -178,8 +178,8 @@ participants_year |>
 
 # Asia-Pacific Training Map
 
-The map below shows locations where methodology-related trainings were delivered,
-with links from the UNSIAP area in Tokyo/Chiba to each destination.
+The map below shows locations where trainings were delivered,
+with links from Chiba to each destination ;-).
 
 ```{r}
 # GEOCODING
@@ -233,22 +233,6 @@ m <- leaflet(methodology_map) |>
   )
 ```
 
-```{r}
-# Add links from Tokyo/Chiba
-
-for(i in 1:nrow(methodology_map)){
-
-  m <- m |>
-    addPolylines(
-      lng = c(origin_lon, methodology_map$lon[i]),
-      lat = c(origin_lat, methodology_map$lat[i]),
-      weight = 1.2,
-      opacity = 0.5
-    )
-}
-
-m
-```
 
 
 ```{r}
