@@ -51,11 +51,133 @@ in data science, machine learning, and data visualization since my arrival at SI
 
 ---
 
-## Face-to-Face Trainings (F)
+## Face-to-Face Trainings 
 
-In-person workshops and trainings
+*In-person workshops and training*
+
+### Asia-Pacific Training Map
+
+The map below shows locations where trainings were delivered, with links from Chiba to each destination ;-).
+
 
 ```{r}
+# GEOCODING
+# Automatically obtain coordinates from locations
+
+locations <- methodology |>
+  filter(Year >= 2020)|>
+  distinct(Location)
+
+coords <- locations |>
+  geocode(Location, method = "osm", lat = lat, long = lon)
+
+methodology_map <- methodology |>
+  left_join(coords, by = "Location") |>
+  filter(!is.na(lat))
+```
+
+```{r}
+# Tokyo / Chiba origin point
+origin_lat <- 35.6074
+origin_lon <- 140.1065
+```
+
+```{r}
+m <- leaflet(methodology_map) |>
+
+  addProviderTiles("CartoDB.Positron") |>
+
+  # Origin point
+  addCircleMarkers(
+    lng = origin_lon,
+    lat = origin_lat,
+    radius = 8,
+    color = "red",
+    fillOpacity = 1,
+    popup = "UNSIAP (Tokyo/Chiba)"
+  ) |>
+
+  # Training locations
+  addCircleMarkers(
+    lng = ~lon,
+    lat = ~lat,
+    radius = 5,
+    color = "navy",
+    popup = ~paste0(
+      "<b>", Title, "</b><br>",
+      Location, "<br>",
+      Year, "<br>",
+      Nb, " participants"
+    )
+  )
+```
+
+
+
+```{r}
+# Add curved links from Tokyo/Chiba
+library(leaflet.extras2)
+
+# Function to create curved line
+make_curve <- function(lon1, lat1, lon2, lat2, n = 100, curvature = 0.2){
+
+  t <- seq(0, 1, length.out = n)
+
+  # Midpoint
+  mid_lon <- (lon1 + lon2) / 2
+  mid_lat <- (lat1 + lat2) / 2
+
+  # Perpendicular offset for curvature
+  dx <- lon2 - lon1
+  dy <- lat2 - lat1
+
+  curve_lon <- mid_lon - curvature * dy
+  curve_lat <- mid_lat + curvature * dx
+
+  # Quadratic Bezier curve
+  lon <- (1 - t)^2 * lon1 +
+         2 * (1 - t) * t * curve_lon +
+         t^2 * lon2
+
+  lat <- (1 - t)^2 * lat1 +
+         2 * (1 - t) * t * curve_lat +
+         t^2 * lat2
+
+  tibble(lon, lat)
+}
+
+# Add curved lines
+for(i in 1:nrow(methodology_map)) {
+
+  curve <- make_curve(
+    origin_lon,
+    origin_lat,
+    methodology_map$lon[i],
+    methodology_map$lat[i],
+    curvature = 0.15
+  )
+
+  m <- m |>
+    addPolylines(
+      lng = curve$lon,
+      lat = curve$lat,
+      color = "steelblue",
+      weight = 1.2,
+      opacity = 0.5
+    )
+}
+
+m
+```
+
+---
+
+### Table of F2F courses
+
+
+```{r}
+# Focusing on F2F 
+
 f2f <- methodology |>
   filter(Form == "F" & Year >=2020) |>
   arrange(desc(Year),desc(Start.date))
@@ -172,122 +294,5 @@ participants_year |>
     legend.position = "top",
     plot.title = element_text(face = "bold")
   )
-```
-
----
-
-# Asia-Pacific Training Map
-
-The map below shows locations where trainings were delivered,
-with links from Chiba to each destination ;-).
-
-```{r}
-# GEOCODING
-# Automatically obtain coordinates from locations
-
-locations <- methodology |>
-  filter(Year >= 2020)|>
-  distinct(Location)
-
-coords <- locations |>
-  geocode(Location, method = "osm", lat = lat, long = lon)
-
-methodology_map <- methodology |>
-  left_join(coords, by = "Location") |>
-  filter(!is.na(lat))
-```
-
-```{r}
-# Tokyo / Chiba origin point
-origin_lat <- 35.6074
-origin_lon <- 140.1065
-```
-
-```{r}
-m <- leaflet(methodology_map) |>
-
-  addProviderTiles("CartoDB.Positron") |>
-
-  # Origin point
-  addCircleMarkers(
-    lng = origin_lon,
-    lat = origin_lat,
-    radius = 8,
-    color = "red",
-    fillOpacity = 1,
-    popup = "UNSIAP (Tokyo/Chiba)"
-  ) |>
-
-  # Training locations
-  addCircleMarkers(
-    lng = ~lon,
-    lat = ~lat,
-    radius = 5,
-    color = "navy",
-    popup = ~paste0(
-      "<b>", Title, "</b><br>",
-      Location, "<br>",
-      Year, "<br>",
-      Nb, " participants"
-    )
-  )
-```
-
-
-
-```{r}
-# Add curved links from Tokyo/Chiba
-library(leaflet.extras2)
-
-# Function to create curved line
-make_curve <- function(lon1, lat1, lon2, lat2, n = 100, curvature = 0.2){
-
-  t <- seq(0, 1, length.out = n)
-
-  # Midpoint
-  mid_lon <- (lon1 + lon2) / 2
-  mid_lat <- (lat1 + lat2) / 2
-
-  # Perpendicular offset for curvature
-  dx <- lon2 - lon1
-  dy <- lat2 - lat1
-
-  curve_lon <- mid_lon - curvature * dy
-  curve_lat <- mid_lat + curvature * dx
-
-  # Quadratic Bezier curve
-  lon <- (1 - t)^2 * lon1 +
-         2 * (1 - t) * t * curve_lon +
-         t^2 * lon2
-
-  lat <- (1 - t)^2 * lat1 +
-         2 * (1 - t) * t * curve_lat +
-         t^2 * lat2
-
-  tibble(lon, lat)
-}
-
-# Add curved lines
-for(i in 1:nrow(methodology_map)) {
-
-  curve <- make_curve(
-    origin_lon,
-    origin_lat,
-    methodology_map$lon[i],
-    methodology_map$lat[i],
-    curvature = 0.15
-  )
-
-  m <- m |>
-    addPolylines(
-      lng = curve$lon,
-      lat = curve$lat,
-      color = "steelblue",
-      weight = 1.2,
-      opacity = 0.5
-    )
-}
-
-m
 ```
 
