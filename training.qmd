@@ -37,8 +37,15 @@ data.training <- data.training |>
   mutate(
     Men = Nb - N.Female
   )
+```
 
-# FILTER: methodology trainings
+```{r}
+Start_Period <-2020
+```
+
+
+```{r}
+# FILTER: methodology trainings since the beginning of the period
 
 methodology <- data.training |>
   filter(
@@ -57,24 +64,32 @@ in data science, machine learning, and data visualization since my arrival at SI
 
 ### Asia-Pacific Training Map
 
-The map below shows locations where trainings were delivered, with links from Chiba to each destination ;-).
+The map below shows locations where courses were delivered, with links from Chiba to each destination ;-).
+
 
 
 ```{r}
+library(maps)
 # GEOCODING
 # Automatically obtain coordinates from locations
 
 locations <- methodology |>
-  filter(Year >= 2020)|>
+  filter(Year >= Start_Period)|>
   distinct(Location)
 
 coords <- locations |>
-  geocode(Location, method = "osm", lat = lat, long = lon)
+  geocode(Location, method = "osm", lat = lat, long = lon) |>
+  filter(!is.na(lat)) |>
+  mutate(
+    country = maps::map.where(x = lon, y = lat) |>  # returns "country:region"
+      str_remove(":.*")                         # keep only country part
+  )
 
 methodology_map <- methodology |>
   left_join(coords, by = "Location") |>
   filter(!is.na(lat))
 ```
+
 
 ```{r}
 # Tokyo / Chiba origin point
@@ -87,7 +102,7 @@ origin_lon <- 140.1065
 # ── Destination summary (one row per unique location) ──────────────────────
 dest_summary <- methodology_map |>
   filter(Location != "Chiba") |>
-  group_by(Location, lat, lon) |>
+  group_by(country, Location, lat, lon) |>
   summarise(
     n_visits    = n(),
     is_duplicate = n() > 1,
@@ -101,9 +116,9 @@ dest_summary <- methodology_map |>
     # Radius scales from 5 (1 visit) up, capped for readability
     marker_radius = 2 + (n_visits - 1) * 1,
     # Hover label
-    hover_label = paste0(
-      "<b>", ifelse(n_visits == 1, "Single visit:", paste0( n_visits," visits")), "</b><br>",
-      "<i>", ifelse(n_visits == 1, "", "Last visit:"), "</i> ", last_title, "<br>",
+    hover_label = paste0( "<b>", country, ": ", "</b>",
+       ifelse(n_visits == 1, "Single visit.", paste0( n_visits," visits.")), "<br>",
+       ifelse(n_visits == 1, "", "Last visit:"), "<i> \"", last_title, "\" </i><br>",
       Location, " — ", last_year, "<br>",
       last_nb, " participants"
     )
@@ -201,7 +216,23 @@ for (i in 1:nrow(dest_summary)) {
 m
 ```
 
+```{r}
+Nb_Courses_F2F <- methodology%>%
+  filter(Form == "F", 
+         Location != "Chiba")%>%
+  nrow()
 
+Nb_Countries_F2F <- methodology%>%
+  filter(Form == "F") %>%
+  filter(!str_detect(Location ,"Chiba")) %>%
+  distinct(Location,.keep_all = FALSE) %>%
+  nrow()
+
+
+```
+
+
+In total, since `r Start_Period`,  I have conducted **`r Nb_Courses_F2F`** face-to-face courses in  **`r Nb_Countries_F2F`** countries (outside Japan). 
 
 ---
 
@@ -210,6 +241,7 @@ m
 Online and remote trainings in survey methodology and official statistics.
 
 ```{r}
+
 el <- methodology |>
   filter(Form == "EL") |>
   arrange(desc(Start.date))
