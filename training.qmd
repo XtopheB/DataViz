@@ -82,126 +82,126 @@ origin_lat <- 35.6074
 origin_lon <- 140.1065
 ```
 
+
 ```{r}
-m <- leaflet(methodology_map) |>
-
-  addProviderTiles("CartoDB.Positron") |>
-
-  # Origin point
-  addCircleMarkers(
-    lng = origin_lon,
-    lat = origin_lat,
-    radius = 8,
-    color = "red",
-    fillOpacity = 1,
-    popup = "UNSIAP (Tokyo/Chiba)"
+# ── Destination summary (one row per unique location) ──────────────────────
+dest_summary <- methodology_map |>
+  filter(Location != "Chiba") |>
+  group_by(Location, lat, lon) |>
+  summarise(
+    n_visits    = n(),
+    is_duplicate = n() > 1,
+    # Last visit = most recent year; break ties by Start.date if available
+    last_title  = Title[which.max(Year)],
+    last_year   = max(Year),
+    last_nb     = Nb[which.max(Year)],
+    .groups     = "drop"
   ) |>
-
-  # Training locations
-  addCircleMarkers(
-    lng = ~lon,
-    lat = ~lat,
-    radius = 5,
-    color = "navy",
-    popup = ~paste0(
-      "<b>", Title, "</b><br>",
-      Location, "<br>",
-      Year, "<br>",
-      Nb, " participants"
+  mutate(
+    # Radius scales from 5 (1 visit) up, capped for readability
+    marker_radius = 2 + (n_visits - 1) * 1,
+    # Hover label
+    hover_label = paste0(
+      "<b>", ifelse(n_visits == 1, "Single visit:", paste0( n_visits," visits")), "</b><br>",
+      "<i>", ifelse(n_visits == 1, "", "Last visit:"), "</i> ", last_title, "<br>",
+      Location, " — ", last_year, "<br>",
+      last_nb, " participants"
     )
   )
 ```
 
 
+```{r}
+# ── Base map ────────────────────────────────────────────────────────────────
+m <- leaflet() |>
+  addProviderTiles("CartoDB.Positron") |>
+  # Origin point
+  addCircleMarkers(
+    lng        = origin_lon,
+    lat        = origin_lat,
+    radius     = 5,
+    color      = "steelblue",
+    fillColor  = "steelblue",
+    fillOpacity = 1,
+    popup      = "UNSIAP (Chiba)"
+  )
+
+```
+
 
 ```{r}
-# Add curved links from Tokyo/Chiba
-library(leaflet.extras2)
-
-# Function to create curved line
-make_curve <- function(lon1, lat1, lon2, lat2, n = 100, curvature = 0.2){
-
-  t <- seq(0, 1, length.out = n)
-
-  # Midpoint
-  mid_lon <- (lon1 + lon2) / 2
-  mid_lat <- (lat1 + lat2) / 2
-
-  # Perpendicular offset for curvature
-  dx <- lon2 - lon1
-  dy <- lat2 - lat1
-
+# ── Curved lines ─────────────────────────────────────────────────────────────
+make_curve <- function(lon1, lat1, lon2, lat2, n = 100, curvature = 0.2) {
+  t        <- seq(0, 1, length.out = n)
+  mid_lon  <- (lon1 + lon2) / 2
+  mid_lat  <- (lat1 + lat2) / 2
+  dx       <- lon2 - lon1
+  dy       <- lat2 - lat1
   curve_lon <- mid_lon - curvature * dy
   curve_lat <- mid_lat + curvature * dx
-
-  # Quadratic Bezier curve
-  lon <- (1 - t)^2 * lon1 +
-         2 * (1 - t) * t * curve_lon +
-         t^2 * lon2
-
-  lat <- (1 - t)^2 * lat1 +
-         2 * (1 - t) * t * curve_lat +
-         t^2 * lat2
-
+  lon <- (1 - t)^2 * lon1 + 2 * (1 - t) * t * curve_lon + t^2 * lon2
+  lat <- (1 - t)^2 * lat1 + 2 * (1 - t) * t * curve_lat + t^2 * lat2
   tibble(lon, lat)
 }
 
-# Add curved lines
-for(i in 1:nrow(methodology_map)) {
-
+for (i in 1:nrow(dest_summary)) {
+  dest  <- dest_summary[i, ]
   curve <- make_curve(
-    origin_lon,
-    origin_lat,
-    methodology_map$lon[i],
-    methodology_map$lat[i],
-    curvature = 0.15
+    origin_lon, origin_lat,
+    dest$lon,   dest$lat,
+    curvature  = 0.15
   )
+
+  line_color   <- ifelse(dest$is_duplicate, "#e05c2a", "steelblue")
+  line_weight  <- ifelse(dest$is_duplicate, 3, 1.2)
+  line_opacity <- ifelse(dest$is_duplicate, 0.75, 0.5)
 
   m <- m |>
     addPolylines(
-      lng = curve$lon,
-      lat = curve$lat,
-      color = "steelblue",
-      weight = 1.2,
-      opacity = 0.5
+      lng     = curve$lon,
+      lat     = curve$lat,
+      color   = line_color,
+      weight  = line_weight,
+      opacity = line_opacity
+    )
+}
+```
+
+
+
+```{r}
+# ── Destination markers (drawn AFTER lines so they sit on top) ──────────────
+for (i in 1:nrow(dest_summary)) {
+  dest <- dest_summary[i, ]
+
+  m <- m |>
+    addCircleMarkers(
+      lng         = dest$lon,
+      lat         = dest$lat,
+      radius      = dest$marker_radius,        # ← scales with n_visits
+      color       = ifelse(dest$is_duplicate, "#e05c2a", "navy"),
+      fillColor   = ifelse(dest$is_duplicate, "#e05c2a", "navy"),
+      fillOpacity = 0.75,
+      # Click popup: full details of every visit if needed
+      popup       = dest$hover_label,
+      # Hover label
+      label       = lapply(dest$hover_label, htmltools::HTML),
+      labelOptions = labelOptions(
+        style     = list(
+          "font-weight" = "normal",
+          "padding"     = "6px 10px",
+          "line-height" = "1.6"
+        ),
+        textsize  = "11px",
+        direction = "auto"
+      )
     )
 }
 
 m
 ```
 
----
 
-### Table of F2F courses
-
-
-```{r}
-# Focusing on F2F 
-
-f2f <- methodology |>
-  filter(Form == "F" & Year >=2020) |>
-  arrange(desc(Year),desc(Start.date))
-```
-
-```{r}
-datatable(
-  f2f |>
-    select(
-      Year,
-      Start.date,
-      Title,
-      Location,
-      Nb,
-      N.Female
-    ),
-  rownames = FALSE,
-  options = list(
-    pageLength = 15,
-    order = list(list(1, 'desc'))
-  ),
-  caption = "Face-to-face methodology trainings"
-)
-```
 
 ---
 
@@ -254,7 +254,6 @@ participants_year <- methodology |>
 
 
 ```{r}
-
 
 participants_year |>
   pivot_longer(
