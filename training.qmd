@@ -323,7 +323,7 @@ datatable(
 
 
 
-# Over Time
+# Over Time, all categories
 
 
 ```{r}
@@ -401,9 +401,17 @@ participants_year <- methodology |>
   mutate(
     Men = Total - Women
   )
+
+ N_Methodo_Part <- participants_year %>%
+   filter(Year > 2020) %>%
+   summarise( N = sum(Total)) %>%
+   pull()
+ 
 ```
 
+## Participants in Methodology category over time. 
 
+Since my arrival at SIAP, I have trained **`r  N_Methodo_Part`** participants, mostly women. 
 
 ```{r}
 # Men and Women over time
