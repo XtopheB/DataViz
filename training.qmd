@@ -26,17 +26,27 @@ data.training <- read_csv("Data/CourseList.csv")
 # Clean variable names
 names(data.training) <- make.names(names(data.training))
 
+# renaming
+data.training <- data.training |>
+  rename(Nb =  N.part, 
+         Title = Topics)
+
 # Dates
 data.training$Start.date <- mdy(data.training$Start.date)
 data.training$End.date   <- mdy(data.training$End.date)
 
-# Men
+
+# Other information
 data.training <- data.training |>
-  rename(Nb =  N.part, 
-         Title = Topics)|>
   mutate(
-    Men = Nb - N.Female
+    Format = case_when(Form =="B" ~ "F", 
+                       Form == "W" ~"EL",
+                       TRUE ~ Form), 
+    Duration = as.numeric(End.date - Start.date) + 1, # +1 to count both start and end day
+    Men = Nb - N.Female, 
+    Women_perc = round(100*N.Female/Nb, 2)
   )
+
 ```
 
 ```{r}
@@ -68,7 +78,7 @@ The map below shows locations where courses were delivered, with links from Chib
 
 
 
-```{r}
+```{r, cache=TRUE}
 library(maps)
 # GEOCODING
 # Automatically obtain coordinates from locations
@@ -218,12 +228,12 @@ m
 
 ```{r}
 Nb_Courses_F2F <- methodology%>%
-  filter(Form == "F", 
+  filter(Format == "F", 
          Location != "Chiba")%>%
   nrow()
 
 Nb_Countries_F2F <- methodology%>%
-  filter(Form == "F") %>%
+  filter(Format == "F") %>%
   filter(!str_detect(Location ,"Chiba")) %>%
   distinct(Location,.keep_all = FALSE) %>%
   nrow()
@@ -243,35 +253,84 @@ Online and remote trainings in survey methodology and official statistics.
 ```{r}
 
 el <- methodology |>
-  filter(Form == "EL") |>
+  filter(Format == "EL") |>
   arrange(desc(Start.date))
 ```
 
 ```{r}
+el %>%
+  select(
+    Year,
+    Start.date,
+    Title,
+    Nb,
+    Women_perc
+  ) %>%
 datatable(
-  el |>
-    select(
-      Year,
-      Start.date,
-      Title,
-      Location,
-      Nb,
-      N.Female
-    ),
   rownames = FALSE,
   options = list(
     pageLength = 15,
     order = list(list(1, 'desc'))
   ),
-  caption = "E-learning methodology trainings"
+ caption = paste0("E-learning courses (methodology category) - since ", Start_Period)
 )
 ```
 
 ---
 
-# Participants Over Time
+## Face to face
 
 ```{r}
+F2F <- methodology |>
+  filter(Format == "F") |>
+  arrange(desc(Start.date))
+```
+
+```{r}
+F2F %>%
+  select(
+    Year,
+    Location, 
+    Start.date,
+    Title,
+    Nb,
+    Women_perc
+  ) %>%
+datatable(
+  rownames = FALSE,
+  options = list(
+    pageLength = 15,
+    order = list(list(2, 'desc'))  # sort according to Third column
+  ),
+  caption = paste0("Face-to-Face courses (methodology category) - since ", Start_Period)
+)
+```
+
+
+
+# Over Time
+
+```{r}
+Courses_year <- data.training %>%
+  filter(Year > 2015) %>%
+  
+  group_by(Year, Format) %>%
+  summarise(
+    n_courses      = n(),
+    n_participants = sum(Nb, na.rm = TRUE),
+    .groups        = "drop"
+  ) |>
+  arrange(desc(Year), Format)
+  
+```
+
+
+
+
+
+
+```{r}
+# Particpants
 participants_year <- methodology |>
   group_by(Year) |>
   summarise(
@@ -286,7 +345,7 @@ participants_year <- methodology |>
 
 
 ```{r}
-
+# Men and Women over time
 participants_year |>
   pivot_longer(
     cols = c(Men, Women),
@@ -304,23 +363,19 @@ participants_year |>
   scale_x_continuous(
     breaks = participants_year$Year
   ) +
-
   scale_color_manual(
     values = c(
       "Men" = "orange",
       "Women" = "purple"
     )
   ) +
-
   labs(
     title = "Participants per Year",
     x = NULL,
     y = "Participants",
     color = NULL
   ) +
-
   theme_minimal(base_size = 14) +
-
   theme(
     legend.position = "top",
     plot.title = element_text(face = "bold")
