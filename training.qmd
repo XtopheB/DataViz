@@ -26,8 +26,9 @@ data.training <- read_csv("Data/CourseList.csv")
 # Clean variable names
 names(data.training) <- make.names(names(data.training))
 
-# Selecting variables 
-data.training <- data.training 
+# Selecting variables (only the first 10 are inforamtive)
+data.training <- data.training %>%
+  select(1:10)
 
 # renaming
 data.training <- data.training |>
@@ -43,7 +44,8 @@ data.training$End.date   <- mdy(data.training$End.date)
 data.training <- data.training |>
   mutate(
     Year = as.integer(Year),
-    Format = case_when(Form =="B" ~ "F", 
+    Format = case_when(Form =="B" ~ "F2F", 
+                       Form == "F" ~ "F2F",
                        Form == "W" ~"EL",
                        TRUE ~ Form), 
     Duration = as.numeric(End.date - Start.date) + 1, # +1 to count both start and end day
@@ -61,7 +63,7 @@ Start_Period <-2020
 MyPalette_Courses <- c(
   "Total" = "#FF6060",
   "EL" = "steelblue", 
-  "F" = "#1b9e77"
+  "F2F" = "#1b9e77"
 )
 
 ```
@@ -241,12 +243,12 @@ m
 
 ```{r}
 Nb_Courses_F2F <- methodology%>%
-  filter(Format == "F", 
+  filter(Format == "F2F", 
          Location != "Chiba")%>%
   nrow()
 
 Nb_Countries_F2F <- methodology%>%
-  filter(Format == "F") %>%
+  filter(Format == "F2F") %>%
   filter(!str_detect(Location ,"Chiba")) %>%
   distinct(Location,.keep_all = FALSE) %>%
   nrow()
@@ -295,7 +297,7 @@ datatable(
 
 ```{r}
 F2F <- methodology |>
-  filter(Format == "F") |>
+  filter(Format == "F2F") |>
   arrange(desc(Start.date))
 ```
 
@@ -440,5 +442,10 @@ participants_year |>
     legend.position = "top",
     plot.title = element_text(face = "bold")
   )
+```
+```{r}
+# Ideas for future
+# data.training %>%
+#   count(Category, sort = TRUE)
 ```
 
