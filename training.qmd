@@ -26,6 +26,9 @@ data.training <- read_csv("Data/CourseList.csv")
 # Clean variable names
 names(data.training) <- make.names(names(data.training))
 
+# Selecting variables 
+data.training <- data.training 
+
 # renaming
 data.training <- data.training |>
   rename(Nb =  N.part, 
@@ -39,6 +42,7 @@ data.training$End.date   <- mdy(data.training$End.date)
 # Other information
 data.training <- data.training |>
   mutate(
+    Year = as.integer(Year),
     Format = case_when(Form =="B" ~ "F", 
                        Form == "W" ~"EL",
                        TRUE ~ Form), 
@@ -50,7 +54,16 @@ data.training <- data.training |>
 ```
 
 ```{r}
+# Parameters
 Start_Period <-2020
+
+# Colors
+MyPalette_Courses <- c(
+  "Total" = "#FF6060",
+  "EL" = "steelblue", 
+  "F" = "#1b9e77"
+)
+
 ```
 
 
@@ -310,27 +323,73 @@ datatable(
 
 # Over Time
 
+
 ```{r}
-Courses_year <- data.training %>%
-  filter(Year > 2015) %>%
-  
-  group_by(Year, Format) %>%
-  summarise(
-    n_courses      = n(),
-    n_participants = sum(Nb, na.rm = TRUE),
-    .groups        = "drop"
-  ) |>
-  arrange(desc(Year), Format)
-  
+# Very clever way to count using bind_rows
+
+yearly_courses <- bind_rows(
+  # EL and F separately
+  data.training |>
+    count(Year, Format, name = "n_courses"),
+  # Total
+  data.training |>
+    count(Year, name = "n_courses") |>
+    mutate(Format = "Total")   # Creates a new category for Format
+)
+```
+
+
+
+```{r}
+yearly_courses %>%
+  ggplot() +
+  aes(x = Year, y= n_courses, color= Format)+
+  geom_line( linewidth = 1.2, alpha = 0.8) +
+  scale_colour_manual(values = MyPalette_Courses) +
+  scale_x_continuous(
+  breaks = sort(unique(yearly_courses$Year))[c(TRUE, FALSE)],
+  labels = as.character
+) +
+  # Adding direct values 
+  geom_text(
+    data = yearly_courses |> filter(Format == "Total"),
+    aes(label = n_courses),
+    vjust = -1.1,
+    hjust = 0.1,
+    #fontface = "bold",
+    alpha = 0.5,
+    show.legend = FALSE
+  ) +
+  labs(
+    title = "Courses per Year",
+    subtitle = "SIAP courses, since 2015",
+    x = NULL,
+    y = "Number of courses"
+  )  + 
+  annotate("rect", xmin = 2020, xmax = 2022,
+                  ymin = 0, ymax = 45,
+                  fill = "steelblue" , alpha = .1)+
+  annotate("text", x = 2021 , y = 38,
+         color= "steelblue",
+         alpha = 0.9,
+          
+         label = "Covid") +
+  theme_minimal() +
+  theme(
+    legend.position = c(0.1, 0.8),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    plot.title = element_text(face = "bold")
+  )
 ```
 
 
 
 
 
-
 ```{r}
-# Particpants
+# Participants
+
 participants_year <- methodology |>
   group_by(Year) |>
   summarise(
