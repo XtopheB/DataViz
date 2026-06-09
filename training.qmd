@@ -430,6 +430,7 @@ participants_year |>
   ) +
   labs(
     title = "Participants per Year",
+    subtitle = "Methodology category",
     x = NULL,
     y = "Participants",
     color = NULL
