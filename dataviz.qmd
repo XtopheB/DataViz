@@ -14,7 +14,7 @@ Enjoy!
 
 *May 2026*
 
-Bontemps C. *How to lie with graphics*. Statistical Journal of the IAOS. 2026; 0(0). <doi:10.1177/18747655261445392>
+Bontemps C. *How to lie with graphics*. Statistical Journal of the IAOS. 2026;42(2):548-562. <https://doi.org/10.1177/18747655261445392>
 
 [Working Paper](images/IAOS-HowToLieWithGraphics-WP.pdf){target="_blank"}\
 [Published version](https://journals.sagepub.com/doi/10.1177/18747655261445392){target="_blank"} (*paywall*)\
