@@ -343,6 +343,10 @@ yearly_courses <- bind_rows(
 
 
 ```{r}
+yearly_courses <- yearly_courses %>%
+  mutate(Format = ifelse(Format =="EL", "Online", Format)) %>%
+  filter(Format != "Total")
+
 yearly_courses %>%
   ggplot() +
   aes(x = Year, y= n_courses, color= Format)+
@@ -353,15 +357,15 @@ yearly_courses %>%
   labels = as.character
 ) +
   # Adding direct values 
-  geom_text(
-    data = yearly_courses |> filter(Format == "Total"),
-    aes(label = n_courses),
-    vjust = -1.1,
-    hjust = 0.1,
-    #fontface = "bold",
-    alpha = 0.5,
-    show.legend = FALSE
-  ) +
+  # geom_text(
+  #   data = yearly_courses |> filter(Format == "Total"),
+  #   aes(label = n_courses),
+  #   vjust = -1.1,
+  #   hjust = 0.1,
+  #   #fontface = "bold",
+  #   alpha = 0.5,
+  #   show.legend = FALSE
+  # ) +
   facet_wrap("Format", nrow=2) +
   labs(
     title = "Courses per Year",
@@ -379,7 +383,7 @@ yearly_courses %>%
          label = "Covid") +
   theme_minimal() +
   theme(
-    legend.position = c(0.1, 0.8),
+    legend.position = "None" ,  # c(0.1, 0.8),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
     plot.title = element_text(face = "bold")
