@@ -284,7 +284,7 @@ el %>%
 datatable(
   rownames = FALSE,
   options = list(
-    pageLength = 15,
+    pageLength = 10,
     order = list(list(1, 'desc'))
   ),
  caption = paste0("E-learning courses (methodology category) - since ", Start_Period)
@@ -314,7 +314,7 @@ F2F %>%
 datatable(
   rownames = FALSE,
   options = list(
-    pageLength = 15,
+    pageLength = 10,
     order = list(list(2, 'desc'))  # sort according to Third column
   ),
   caption = paste0("Face-to-Face courses (methodology category) - since ", Start_Period)
@@ -362,6 +362,7 @@ yearly_courses %>%
     alpha = 0.5,
     show.legend = FALSE
   ) +
+  facet_wrap("Format", nrow=2) +
   labs(
     title = "Courses per Year",
     subtitle = "SIAP courses- all categories, since 2015",
@@ -428,7 +429,6 @@ participants_year |>
 
   geom_line(linewidth = 1.2) +
   geom_point(size = 2.5) +
-
   scale_x_continuous(
     breaks = participants_year$Year
   ) +
@@ -456,4 +456,51 @@ participants_year |>
 # data.training %>%
 #   count(Category, sort = TRUE)
 ```
+
+
+```{r}
+knitr::knit_exit()
+```
+
+##  Evolution of courses by  Categories
+
+```{r}
+
+data.training %>%
+  filter(Category %in% c("methodology", "Envi", "management", "FOS", "POS", "Eco")) %>%
+  count(Year, Category) %>%
+  ggplot(aes(x = Year, y = n)) +
+  geom_line(linewidth = 1, color = "steelblue") +
+  facet_wrap(~ Category) +
+  scale_x_continuous(
+    breaks = pretty) +
+  labs(
+    title = "Evolution of the Number of Trainings by Category",
+    x = NULL,
+    y = "Number of trainings"
+  ) +
+  theme_minimal()
+```
+
+### Particpants
+
+```{r}
+data.training %>%
+  filter(Category %in% c("methodology", "Envi", "management", "FOS", "POS", "Eco")) %>%
+  group_by(Year, Category) %>%
+  summarise(Participants = sum(Nb, na.rm = TRUE),
+            .groups = "drop") %>%
+  ggplot(aes(x = Year, y = Participants)) +
+  geom_line(linewidth = 1, color =  "#FF6060") +
+  facet_wrap(~ Category) +
+  scale_x_continuous(
+    breaks = pretty) +
+  labs(
+    title = "Evolution of Participants by Category",
+    x = NULL,
+    y = "Participants"
+  ) +
+  theme_minimal()
+```
+
 
