@@ -48,7 +48,7 @@ library(patchwork)
 
 English or Latin."
 
-# Pourquoi je créee des outils pédagogiques interactifs? 
+## Pourquoi je créee des outils pédagogiques interactifs? 
 
 - Une majorité de cours en-ligne
 - Beaucoup de participants (Massive Learning - MOOC)
@@ -81,6 +81,6 @@ English or Latin."
 
 </div>
 
-## Un par un
+## Un par un: Le package *learner*
 
 
