@@ -1,0 +1,86 @@
+---
+title:  "Tandis que les IA rôdent : Pratiques et expériences de création d'outils pédagogiques"
+subtitle: " Ingé-Stat Toulouse"
+author:
+  - name:  "Christophe Bontemps (SIAP)"
+    affiliation:  "![](../Images/escap_siap_logo.png){width=150px} "
+
+format:
+  revealjs:
+    theme: solarized
+    css: "myStyle.css"
+    embed-resources: true
+    slide-number: true
+    footer: "Christophe Bontemps - SIAP "
+    transition: fade
+    center: false
+    progress: true
+  html:
+    toc: true
+    code-fold: true
+  pdf:
+    documentclass: article
+    toc: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+
+
+```{r}
+library(tidyverse)
+library(gapminder)
+library(ggrepel)
+library(plotly)
+library(kableExtra)
+library(gridExtra)
+library(patchwork)
+
+
+```
+
+
+# Disclaimer {background-image="../Images/MrFox.Jpeg" background-size="50%" background-position="right"}
+
+"I don't think he speaks 
+
+English or Latin."
+
+# Pourquoi je créee des outils pédagogiques interactifs? 
+
+- Une majorité de cours en-ligne
+- Beaucoup de participants (Massive Learning - MOOC)
+- Tutoriels à faire avant les cours en présence
+
+
+## Quatre exemples
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 1em; height: 85%;">
+
+<div class="fragment fade-in-then-semi-out" style="text-align: center;">
+<p style="font-size:0.7em;">Tutoriels R avec <em>learner</em></p>
+<img src="../Images/learnR.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+</div>
+
+<div class="fragment fade-in-then-semi-out" style="text-align: center;">
+<p style="font-size:0.7em;"><em>Widgets</em> interactifs avec <em>Observable</em></p>
+<img src="../Images/Observable.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+</div>
+
+<div class="fragment fade-in-then-semi-out" style="text-align: center;">
+<p style="font-size:0.7em;">Scrollytelling avec <em>R</em> et <em>closeread</em></p>
+<img src="../Images/Scrollytelling.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+</div>
+
+<div class="fragment fade-in-then-semi-out" style="text-align: center;">
+<p style="font-size:0.7em;">Tutoriel SQL en <em>Html5</em></p>
+<img src="../Images/SQL-Html.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+</div>
+
+</div>
+
+## Un par un
+
+
