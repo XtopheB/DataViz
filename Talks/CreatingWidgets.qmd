@@ -41,12 +41,21 @@ library(patchwork)
 
 ```
 
+# Disclaimer
 
-# Disclaimer {background-image="../Images/MrFox.Jpeg" background-size="50%" background-position="right"}
+
+
+
+<p style="font-size:0.6em;"><em>``The presentation of the material in this presentation do not imply the expression of any opinion whatsoever on the part of the Secretariat of the United Nations. The views expressed in this presentation are those of the author(s) and do not necessarily reflect the views or policies of the United Nations.''</em></p>
+
+![](../Images/escap_siap_logo.png){height=5% fig-align="center"}
+
+# Désolé... {background-image="../Images/MrFox.Jpeg" background-size="50%" background-position="right"}
 
 "I don't think he speaks 
 
 English or Latin."
+
 
 ## Pourquoi je créee des outils pédagogiques interactifs? 
 
@@ -54,6 +63,7 @@ English or Latin."
 - Beaucoup de participants (Massive Learning - MOOC)
 - Tutoriels à faire avant les cours en présence
 
+![](../Images/open_source_software.png){height=5% fig-align="center"}
 
 ## Quatre exemples
 
@@ -82,5 +92,25 @@ English or Latin."
 </div>
 
 ## Un par un: Le package *learner*
+:::: {.columns}
+
+::: {.column width="55%"}
+Tutoriels interactifs pour R :
+
+- Exercices en R exécutables directement,  sans installation
+- Questions à choix multiples
+- Feedback immédiat pour l'apprenant
+- Intégration facile (**Shiny**) 
+
+:::
+
+::: {.column width="45%"}
+<a href="https://rstudio.github.io/learnr/" target="_blank">
+  <img src="../Images/learnR.jpg" 
+       style="width:100%; height:420px; object-fit:cover; border-radius:8px;">
+</a>
+:::
+
+::::
 
 
