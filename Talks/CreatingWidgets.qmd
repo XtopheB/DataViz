@@ -264,11 +264,13 @@ Les IA rôdent...
 
 <a href="https://xtopheb.github.io/ADV-Course/GenderBias/InclusiveChartGame.html" target="_blank"> Inclusivity in dataviz </a>  (Html)
 
-####  Beware of Maps: An experiment
+####  Beware of Maps
 
-<a href="https://observablehq.com/@xtopheb/visualizing-statistics-on-maps" target="_blank"> Experiment of Map design</a> (Observable)
+<a href="https://observablehq.com/@xtopheb/visualizing-statistics-on-maps" target="_blank"> Visualizing Population (migrants) on Maps</a> (Observable)
 
+<br><br><br>
 
+<span style="font-size: 0.6em; color: #93a1a1;">Pour plus d'info,  <a href="mailto:christophe.bontemps@un.org" style="color: #268bd2;">contactez moi</a> ou visitez mon espace <a href="https://github.com/XtopheB" style="color: #268bd2;"target="_blank"> GitHub</a>.</span>
 
 
 
