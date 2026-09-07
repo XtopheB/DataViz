@@ -187,7 +187,7 @@ Tutoriels interactifs pour R :
 </a>
 :::
 
-> Creation: Moi (50%). Code: AI (90%)
+> Creation: Moi (50%). Code: **AI (90%)**
 ::::
 
 # L'histoire:  {background-image="../Images/MrFoxStory.JPG" background-size="55%" background-position="right"}
@@ -206,8 +206,7 @@ comme ça..."
 Avec <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target="_blank"> RMySQL </a> et <a href="https://dbi.r-dbi.org/" target="_blank">DBI</a> on peut émuler SQL en Shiny!
 
 - Exercises interactifs (shiny) mais en SQL interprétés par *RmySQL*
-- Bases de données reliées par *DBI*
-- Données hébergées sur *freeSQL.com*
+- Bases de données reliées par *DBI*  hébergées sur *freeSQL.com*
 - Solution pas vraiment *scalable*
 
 :::
@@ -227,13 +226,11 @@ Avec <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target=
 
 ::: {.column width="55%"}
 
-Avec <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target="_blank"> RMySQL</a> et <a href="https://dbi.r-dbi.org/" target="_blank">DBI</a> on peut émuler SQL en Shiny!
 
-
-- SQL en HTML suggérée par Claude
--  *alasSQL* rapide et sûr. 
-- Solution plus simple, plus rapide...
-- mais code moins maitrisé! 
+- Ma solution pas trés élégante...
+- mais **code  maitrisé!** 
+-  *alasSQL* plus rapide et plus sûr.
+- mais **code moins maitrisé**...
 
 :::
 
@@ -245,7 +242,7 @@ Avec <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target=
  
 :::
 
-> Creation: Moi (50%). Code: **AI (90%)**
+> Creation: Moi (90%). Code: Moi (50%)
 ::::
 
 
