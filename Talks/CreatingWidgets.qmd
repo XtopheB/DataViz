@@ -74,15 +74,16 @@ English or Latin."
 <img src="../Images/learnR.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
 </div>
 
-<div class="fragment fade-in-then-semi-out" style="text-align: center;">
-<p style="font-size:0.7em;"><em>Widgets</em> interactifs avec <em>Observable</em></p>
-<img src="../Images/Observable.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
-</div>
 
 <div class="fragment fade-in-then-semi-out" style="text-align: center;">
 <p style="font-size:0.7em;">Scrollytelling avec <em>R</em> et <em>closeread</em></p>
 <img src="../Images/Scrollytelling.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
 </div>
+
+<div class="fragment fade-in-then-semi-out" style="text-align: center;">
+<p style="font-size:0.7em;"><em>Widgets</em> interactifs avec <em>Observable</em></p>
+<img src="../Images/Observable.jpg" style="width:100%; height:150px; object-fit:cover; border-radius:6px;">
+</div> 
 
 <div class="fragment fade-in-then-semi-out" style="text-align: center;">
 <p style="font-size:0.7em;">Tutoriel SQL en <em>Html5</em></p>
@@ -111,6 +112,33 @@ Tutoriels interactifs pour R :
 </a>
 :::
 
+> Creation: Moi (100%), code: Moi (95%)
+::::
+
+
+
+## Scrollytelling avec R + Closeread
+:::: {.columns}
+
+::: {.column width="55%"}
+
+<a href="https://closeread.dev/" target="_blank">closeread </a> est une extension de Quarto pour le *scrollytelling*
+
+- Intégré dans RStudio/Quarto
+- Quarto doc avec options YAML
+- Zoom, pan, triggers, highlights
+- Html hébergé sur GitHub
+
+:::
+
+::: {.column width="45%"}
+<a href="https://xtopheb.github.io/GISCourse/SQL/SQL_Tutorial_updated.html" target="_blank">
+  <img src="../Images/Scrollytelling.jpg" 
+       style="width:100%; height:420px; object-fit:cover; border-radius:8px;">
+</a>
+:::
+
+> Creation: Moi (100%), code: Moi (90%)
 ::::
 
 ## Widgets avec Observable
@@ -134,6 +162,101 @@ Tutoriels interactifs pour R :
 </a>
 :::
 
+> Creation: Moi (100%). Code: Observable (60%) + AI (20%)
 ::::
+
+
+## Tutoriel SQL en Html5
+:::: {.columns}
+
+::: {.column width="55%"}
+
+**HTML** tout le monde connait...mais  <a href="https://github.com/alasql/alasql" target="_blank">alasSQL </a>   
+
+- SQL dans le navigateur
+- Trés rapide
+- CSS intégré dans le navidateur (ou ailleurs)
+- Tout l'environnement html 
+
+:::
+
+::: {.column width="45%"}
+<a href="https://xtopheb.github.io/GISCourse/SQL/SQL_Tutorial_updated.html" target="_blank">
+  <img src="../Images/SQL-Html.jpg" 
+       style="width:100%; height:420px; object-fit:cover; border-radius:8px;">
+</a>
+:::
+
+> Creation: Moi (50%). Code: AI (90%)
+::::
+
+# L'histoire:  {background-image="../Images/MrFoxStory.JPG" background-size="55%" background-position="right"}
+
+"Tout ne s'est pas déroulé
+
+comme ça..."
+
+
+
+## Quand on ne connaît que shiny...
+:::: {.columns}
+
+::: {.column width="55%"}
+
+Avec <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target="_blank"> RMySQL </a> et <a href="https://dbi.r-dbi.org/" target="_blank">DBI</a> on peut émuler SQL en Shiny!
+
+- Exercises interactifs (shiny) mais en SQL interprétés par *RmySQL*
+- Bases de données reliées par *DBI*
+- Données hébergées sur *freeSQL.com*
+- Solution pas vraiment *scalable*
+
+:::
+
+::: {.column width="45%"}
+ <img src="../Images/RapCourseImage.jpg" 
+       style="width:100%; height:320px; object-fit:cover; border-radius:8px;">
+:::
+
+> Creation: Moi (90%). Code: Moi (50%)
+::::
+
+
+
+## Mon IA sait des choses..
+:::: {.columns}
+
+::: {.column width="55%"}
+
+Avec <a href="https://cran.r-project.org/web/packages/RMySQL/index.html" target="_blank"> RMySQL</a> et <a href="https://dbi.r-dbi.org/" target="_blank">DBI</a> on peut émuler SQL en Shiny!
+
+
+- SQL en HTML suggérée par Claude
+-  *alasSQL* rapide et sûr. 
+- Solution plus simple, plus rapide...
+- mais code moins maitrisé! 
+
+:::
+
+::: {.column width="45%"}
+<a href="https://xtophedataviz.shinyapps.io/SQLTutorial/" target="_blank">
+  <img src="../Images/SQLShiny.JPG" 
+       style="width:100%; height:420px; object-fit:cover; border-radius:8px;">
+</a>
+ 
+:::
+
+> Creation: Moi (50%). Code: **AI (90%)**
+::::
+
+
+# Morale... {background-image="../Images/MrFoxDubitatif.JPG" background-size="50%" background-position="right" }
+
+Les IA rôdent...
+
+... pour nous? 
+
+<br><br><br><br>
+
+<span style="font-size: 0.6em; color: #93a1a1;">Images honteusements volées (à Wes Anderson et ses artistes) directement et sans IA </span>
 
 
