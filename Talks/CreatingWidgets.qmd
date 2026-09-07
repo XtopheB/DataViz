@@ -197,7 +197,6 @@ Tutoriels interactifs pour R :
 comme ça..."
 
 
-
 ## Quand on ne connaît que shiny...
 :::: {.columns}
 
@@ -255,5 +254,25 @@ Les IA rôdent...
 <br><br><br><br>
 
 <span style="font-size: 0.5em; color: #93a1a1;">Images honteusements volées (à Wes Anderson et ses artistes) directement et sans IA </span>
+
+## Autres réalisations. 
+
+#### Surfaces are hard to evaluate
+<a href="https://old.observablehq.com/embed/%40xtopheb/surfaces-are-hard-to-evaluate?cell=*" target="_blank"> Game on visualization </a> (Observable)
+
+#### Redesign the Chart
+
+<a href="https://xtopheb.github.io/ADV-Course/GenderBias/InclusiveChartGame.html" target="_blank"> Inclusivity in dataviz </a>  (Html)
+
+####  Beware of Maps: An experiment
+
+<a href="https://observablehq.com/@xtopheb/visualizing-statistics-on-maps" target="_blank"> Experiment of Map design</a> (Observable)
+
+
+
+
+
+
+
 
 
