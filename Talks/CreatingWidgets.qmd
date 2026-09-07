@@ -254,6 +254,6 @@ Les IA rôdent...
 
 <br><br><br><br>
 
-<span style="font-size: 0.6em; color: #93a1a1;">Images honteusements volées (à Wes Anderson et ses artistes) directement et sans IA </span>
+<span style="font-size: 0.5em; color: #93a1a1;">Images honteusements volées (à Wes Anderson et ses artistes) directement et sans IA </span>
 
 
